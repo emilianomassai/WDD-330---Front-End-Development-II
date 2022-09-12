@@ -3,7 +3,7 @@ var assignmentList = '';
 const links = [
     {
         label: "Week1 notes",
-        url: "week1/index.html"
+        url: "/weeks/week1/index.html"
     }
 ]
 
