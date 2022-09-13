@@ -1,5 +1,7 @@
+// creating variable to store the values of the array
 var assignmentList = '';
 
+// array with all the week's links 
 const links = [
     {
         label: "Week1 notes",
@@ -12,15 +14,16 @@ const links = [
     }
 ]
 
+// for each loop to pull out information from the array and concatenate it 
+// in the assignmentList variable 
 links.forEach(link => {
 
     assignmentList += '<li> <a href = "' + link.url + '">' + link.label + ' </a> </li>';
 });
 
+// selecting the HTML element where the content of the array will be dynamically
+// displayed  
 document.getElementById("orderedList").innerHTML = assignmentList;
 
 
 
-
-// Read a list of links from an array. (You will also need to create this array)
-//  For each of the items in the array of links you should create a li element, add an a element with the label and url from the list of links, and add the new li element into the ol element you grabbed above.
