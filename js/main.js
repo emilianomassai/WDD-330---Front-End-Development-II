@@ -15,15 +15,17 @@ const links = [
 ]
 
 // for each loop to pull out information from the array and concatenate it 
-// in the assignmentList variable 
-links.forEach(link => {
+// in the assignmentList variable. Check first if the element has been created
+// properly
+if (links) {
+    links.forEach(link => {
 
-    assignmentList += '<li> <a href = "' + link.url + '">' + link.label + ' </a> </li>';
-});
+        assignmentList += '<li> <a href = "' + link.url + '">' + link.label + ' </a> </li>';
+    });
 
-// selecting the HTML element where the content of the array will be dynamically
-// displayed  
-document.getElementById("orderedList").innerHTML = assignmentList;
-
+    // selecting the HTML element where the content of the array will be dynamically
+    // displayed  
+    document.getElementById("orderedList").innerHTML = assignmentList;
+}
 
 
