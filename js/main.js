@@ -1,12 +1,12 @@
 //array with all the week's links 
 var weekItems = [
     {
-        label: "Week1 notes",
+        label: "Week 01",
         url: "/WDD-330---Front-End-Development-II/weeks/week1/index.html"
     },
 
     {
-        label: "Week2 notes",
+        label: "Week 02",
         url: "/WDD-330---Front-End-Development-II/weeks/week2/index.html"
     }
 ]
@@ -72,5 +72,3 @@ function displayListOfWeeks(weekItems, listElementName) {
 //     // displayed  
 //     document.getElementById("listOfWeeks").innerHTML = assignmentList;
 // }
-
-
