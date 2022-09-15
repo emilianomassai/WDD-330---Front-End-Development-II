@@ -2,12 +2,12 @@
 var weekItems = [
     {
         label: "Week1 notes",
-        url: "/weeks/week1/index.html"
+        url: "../weeks/week1/index.html"
     },
 
     {
         label: "Week2 notes",
-        url: "/weeks/week2/index.html"
+        url: "../weeks/week2/index.html"
     }
 ]
 
@@ -39,8 +39,11 @@ function displayListOfWeeks(weekItems, listElementName) {
 }
 
 
+// This is how I was managing the array with javascript before look at the 
+// meeting of week 1:
 
-// // creating variable to store the values of the array
+
+// creating variable to store the values of the array
 // var assignmentList = '';
 
 // // array with all the week's links 
