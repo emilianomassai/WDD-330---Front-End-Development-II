@@ -12,6 +12,12 @@ p, li{
     color: #525252;
 }
 
+#code {
+  font-family:monospace;
+  font-size: larger;
+  font-weight: bold;
+}
+
   h2, h3, h4{
     font-family: "Lucida Sans Unicode", Verdana, sans-serif;
     color: #525252;
