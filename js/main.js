@@ -27,7 +27,7 @@ function displayListOfWeeks(weekItems, listElementName) {
             let anchor = document.createElement('a');
             anchor.innerHTML = element.label;
             anchor.href = element.url;
-            anchor.target = "_blank";
+            anchor.target = "_self";
 
             //create list item and attach anchor
             let li = document.createElement('li');
