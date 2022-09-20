@@ -7,7 +7,7 @@
     padding-right: 2%;
   }
 
-p, li{
+p, li, #numberOutput, #input, #resultNumber{
     font-family: "Lucida Sans Unicode", Verdana, sans-serif;
     color: #525252;
 }
