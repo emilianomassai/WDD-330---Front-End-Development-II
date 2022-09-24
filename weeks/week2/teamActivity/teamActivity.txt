@@ -1,1 +1,136 @@
-CODE
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/WDD-330---Front-End-Development-II/js/fetchContent.js"></script>
+    <title>W2 | Team Activity</title>
+  </head>
+  <body>
+    <header></header>
+    <h1>Week 2 Team Activity</h1>
+
+    <h2>1) Input and Output</h2>
+    <!-- Add a text input and a button. Put an empty div with an ID below those. -->
+    <input id="userInput" type="text" placeholder="Say Something" />
+    <button onclick="readInput()">Submit</button>
+    <!-- Add a script tag, write a function that will read the contents of the input, and write them to the div. Call the function when the button is pressed. -->
+    <script>
+      function readInput() {
+        var getInput = document.getElementById("userInput").value;
+        document.getElementById("input").innerHTML = getInput;
+      }
+    </script>
+    <div id="input"></div>
+
+    <!-- Write a new function that expects a number as an argument. It should take that number and sum all the numbers up to the number provided. (ie n=5…so it would do 1+2+3+4+5 = 15) It should return that value. -->
+    <h2>2) Adding numbers from user input</h2>
+    <p>
+      Example: If the user enter 5 the result would be 15 as the function would
+      sum all the numbers up to the number provided: 1+2+3+4+5.
+    </p>
+    <input id="numberFromUser" type="text" placeholder="Enter a number" />
+    <button id="userNumberBt" onclick="getSumOfNumbers()">Sum</button>
+    <div id="numberOutput"></div>
+
+    <script>
+      function getSumOfNumbers() {
+        const userInput = document.getElementById("numberFromUser").value;
+        const resultNumber = document.getElementById("numberOutput");
+        const userNumber = parseInt(userInput);
+        if (userNumber !== NaN) {
+          resultNumber.innerHTML = "Total: " + sum(userNumber);
+        }
+      }
+      function sum(number) {
+        let total = 0;
+        for (let i = 1; i <= number; i++) {
+          total += i;
+        }
+        return total;
+      }
+    </script>
+
+    <h2>3) Adding machine</h2>
+
+    <input id="firstNumber" placeholder="First number" type="number" /> <br />
+    <br />
+    <input id="secondNumber" placeholder="Second number" type="number" />
+    <button id="addBtn" onclick="add()">+</button>
+    <div id="resultNumber"></div>
+
+    <script>
+      function add() {
+        const firstNumber = document.getElementById("firstNumber").value;
+        const secondNumber = document.getElementById("secondNumber").value;
+        const resultNumber = document.getElementById("resultNumber");
+
+        const firstNumberFloat = parseFloat(firstNumber);
+        const secondNumberFloat = parseFloat(secondNumber);
+        if ((firstNumberFloat !== NaN) & (secondNumberFloat !== NaN)) {
+          const total = firstNumberFloat + secondNumberFloat;
+          resultNumber.innerHTML = "Total: " + total;
+        }
+      }
+    </script>
+
+    <h2>4) Stretch Goals</h2>
+
+    <input id="firstNumStretch" placeholder="enter a number" type="number" />
+    <br />
+    <br /><input
+      id="secondNumStretch"
+      placeholder="Enter a number"
+      type="number"
+    />
+    <!-- Following the DRY programming practice. Do not repeat the same piece of code twice. Using callbacks to pass function inside another function as argument. -->
+
+    <button id="addition" onclick="operate(addTwoNumbers)">+</button>
+    <button id="subtraction" onclick="operate(subTwoNumbers)">-</button>
+    <button id="moltiplication" onclick="operate(multTwoNumbers)">*</button>
+    <div id="outputStretch"></div>
+
+    <script>
+      function getNumber(numId) {
+        const number = document.getElementById(numId).value;
+        const numberFloat = parseFloat(number);
+        if (numberFloat !== NaN) {
+          return numberFloat;
+        } else return 0;
+      }
+      function updateTotal(value) {
+        const outputElement = document.getElementById("outputStretch");
+        outputElement.innerHTML = "Total: " + value;
+      }
+
+      // In Javascript there are several ways to define a function: with a function declaration, a function expression, or an arrow function.
+      // Make sure to use each of the three methods at least once in
+      // your function definitions:
+
+      // 1) function declaration
+      function addTwoNumbers(numOne, numTwo) {
+        return numOne + numTwo;
+      }
+      // 2) function expression
+      const subTwoNumbers = function (numOne, numTwo) {
+        return numOne - numTwo;
+      };
+      // 3) arrow function
+      const multTwoNumbers = (numOne, numTwo) => numOne * numTwo;
+
+      // callback
+      function operate(operation) {
+        //operation is a function
+        const total = operation(
+          getNumber("firstNumStretch"),
+          getNumber("firstNumStretch")
+        );
+        updateTotal(total);
+      }
+    </script>
+
+    <a href="/WDD-330---Front-End-Development-II/weeks/week2/index.html"
+      >Go back to Week 2 Page</a
+    >
+
+    <footer></footer>
+  </body>
+</html>
