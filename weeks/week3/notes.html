@@ -5,9 +5,9 @@
 
     <title>Notes of Week 3</title>
   </head>
-
   <body>
     <header></header>
+
     <h1>Notes of Week 3</h1>
 
      <h2>Chapter 5: Objects</h2>
@@ -116,6 +116,20 @@
 </li>
 </ul>
 
+<h3 class="questions">Chapter 5 Questions:</h3>
+<ol>
+  <li>
+    I'm working with databases at work and I see some similarities between objects manipulation and how you retrieve data from databases. For example, 
+    if you want to find values from multiple tables, you JOIN two table and then you access them like this: <br>
+<pre><code>
+    SELECT u.firstName, u.lastName, a.address * FROM tblUsers u
+    JOIN tblAddress a ON u.userId = a.userId
+    WHERE firstName = 'Emiliano' AND lastName = 'Massai'
+</code></pre>
+    Is u.firstName like object.property?
+  </li>
+</ol>
+
       <h2>Chapter 6: The Document Object Model </h2>
       <p>
         The Document Object Model (DOM) allows you to access elements of a web page and enable interaction with the page by adding and removing elements, changing the order, content and attributes of elements, and even altering how they are styled. 
@@ -149,6 +163,13 @@
               </p>
         </li>
       </ul>
+
+      <h3 class="questions">Chapter 6 Questions:</h3>
+<ol>
+  <li>
+    Are we going to use a lot of jQuery this semester? What are the advantages and disadvantages of using it on the code?
+  </li>
+</ol>
 
 
       <h2>Chapter 7: Events </h2>
@@ -189,7 +210,15 @@
               </ul>
         </li>
       </ul>
-
+      <h3 class="questions">Chapter 7 Questions:</h3>
+<ol>
+  <li>
+    The addEventListener is very useful tool but I don't see the point of use it to fire each time an user clicks into the body of the document. Is that used from trackers or data collection? 
+  </li>
+  <li>
+    What is the best approach when talking about event propagation? Is more efficient using bubbling or capturing?
+  </li>
+</ol>
 
     <a href="/WDD-330---Front-End-Development-II/weeks/week3/index.html"
       >Go back to Week 3 Page</a
