@@ -2,12 +2,93 @@
 <html lang="en">
   <head>
     <script src="/WDD-330---Front-End-Development-II/js/fetchContent.js"></script>
-    <title>W3 | Team Activity</title>
+    <title>W3 | Team Activity 💪</title>
   </head>
   <body>
     <header></header>
     <h1>Week 3 Team Activity</h1>
 
+    <p>
+      To see the results of the exercises, please open the JavaScript Console.
+    </p>
+
+    <h2>Array.prototype.filter()</h2>
+    <ul>
+      <li>
+        <p>
+          The filter() method is an immutable JavaScript array iteration method
+          that creates a new array filled with all the original array elements
+          that pass the test provided by the callback function without changing
+          the original array.
+        </p>
+      </li>
+      <li>
+        <p>
+          OriginalArray.filter() iterates in in the array to check for matches.
+          inventor: is the object currently being executed. If the actual object
+          matches the requirements, it will be stored in the new array.
+        </p>
+      </li>
+    </ul>
+
+    <h2>Array.prototype.map()</h2>
+    <ul>
+      <li>
+        <p>
+          The map() is a built-in array method for iterating through the
+          elements inside an array collection in JavaScript. Think of looping as
+          a way to progress from one element to another in a list, while still
+          maintaining the order and position of each element.
+        </p>
+      </li>
+      <li>
+        <p>
+          OriginalArray.map() iterates through the objects in the original array
+          and store the chosen properties of each object (in this case first and
+          last name) to the new array.
+        </p>
+      </li>
+    </ul>
+
+    <h2>Array.prototype.sort()</h2>
+    <ul>
+      <li>
+        <p>
+          The sort() method sorts the elements of an array in place and returns
+          the reference to the same array, now sorted. The default sort order is
+          ascending, built upon converting the elements into strings, then
+          comparing their sequences of UTF-16 code units values.
+        </p>
+      </li>
+      <li>
+        <p>
+          OriginalArray.sort() Between all the different main sorting types
+          (bubble, selection, insertion, merge, quick and Heap), the one mainly
+          used in this built-in array method is the merge sort.
+        </p>
+      </li>
+    </ul>
+
+    <h2>Array.prototype.reduce()</h2>
+    <ul>
+      <li>
+        <p>
+          The reduce() method executes a user-supplied "reducer" callback
+          function on each element of the array, in order, passing in the return
+          value from the calculation on the preceding element. The final result
+          of running the reducer across all elements of the array is a single
+          value.
+        </p>
+      </li>
+      <li>
+        <p>
+          OriginalArray.reduce() accumulator starts from 0 and adds each time
+          the selected value to the sum. In this case, for each object
+          (inventor) in the array, it takes the years lived from each inventor
+          and adds them up to get to a single value.
+        </p>
+      </li>
+    </ul>
     <script>
       // Get your shorts on - this is an array workout!
       // ## Array Cardio Day 1
@@ -74,7 +155,18 @@
       ];
 
       // Array.prototype.filter()
+
+      /*
+      The filter() method is an immutable JavaScript array iteration method that creates a new array filled with all the original array elements that pass the test provided by the callback function without changing the original array.
+      */
+
       // 1. Filter the list of inventors for those who were born in the 1500's
+
+      /*
+        originalArray.filter() iterates in in the array to check for matches.
+        inventor: is the object currently being executed.
+        If the actual object matches the requirements, it will be stored in the new array.
+      */
       const bornIn1500s = inventors.filter(
         (inventor) => inventor.year >= 1500 && inventor.year < 1600
       );
@@ -84,7 +176,16 @@
       console.table(bornIn1500s);
 
       // Array.prototype.map()
+
+      /*
+      The map() is a built-in array method for iterating through the elements inside an array collection in JavaScript. Think of looping as a way to progress from one element to another in a list, while still maintaining the order and position of each element.
+      */
+
       // 2. Give us an array of the inventors' first and last names
+
+      /*
+      originalArray.map() iterates through the objects in the original array and store the chosen properties of each object (in this case first and last name) to the new array.
+      */
       const fullName = inventors.map(
         (inventor) => inventor.first + " " + inventor.last
       );
@@ -100,6 +201,11 @@
       */
 
       // 3. Sort the inventors by birth date, oldest to youngest
+
+      /*
+      originalArray.sort() 
+      Between all the different main sorting types (bubble, selection, insertion, merge, quick and Heap), the one mainly used in this built-in array method is the merge sort.
+      */
       inventors.sort((a, b) => a.year - b.year);
 
       console.log("3. Sort the inventors by birth date, oldest to youngest:");
@@ -112,6 +218,11 @@
       */
 
       // 4. How many years did all the inventors live?
+
+      /*
+      originalArray.reduce()
+      accumulator starts from 0 and adds each time the selected value to the sum. In this case, for each object (inventor) in the array, it takes the years lived from each inventor and adds them up to get to a single value.
+      */
       const yearsLived = inventors.reduce((accumulator, currentValue) => {
         return accumulator + (currentValue.passed - currentValue.year);
       }, 0);
