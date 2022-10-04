@@ -3,9 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <title>Hero Form</title>
+    <style>
+      .error {
+        background: #f99;
+        border: #900 1px solid;
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <form id="hero">
+    <form id="heroForm">
       <label for="heroName"
         >Name:
         <input
@@ -15,12 +22,15 @@
           autofocus
           maxlength="32"
           placeholder="Enter the Hero name"
+          required
+          onkeyup="validateInline()"
         />
       </label>
       <br />
       <br />
       <label for="realName"
-        >Real Name: <input type="password" name="realName" id="realName"
+        >Real Name:
+        <input type="password" name="realName" id="realName" required
       /></label>
 
       <p>Super Powers:</p>
@@ -70,7 +80,7 @@
       </label>
       <br />
       <br />
-      <label for="age"
+      <label for="age" required
         >Age: <input type="number" id="age" name="age" min="0" step="1"
       /></label>
 
@@ -78,7 +88,7 @@
       <br />
       <label for="City"
         >Base of Operations:
-        <select name="city" id="city">
+        <select name="city" id="city" required>
           <option value="" selected>Choose a City</option>
           <option value="Metropolis">Metropolis</option>
           <option value="Gotham City">Gotham City</option>
@@ -90,7 +100,7 @@
 
       <br />
       <br />
-      <label for="origin"
+      <label for="origin" required
         >Origin Story:
         <br />
         <textarea id="origin" name="origin" rows="20" cols="60">
