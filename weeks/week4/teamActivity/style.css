@@ -26,6 +26,10 @@
     border-bottom: 0;
   }
 
+  .gameStatus, .winningCounter {
+    text-align: center;
+  }
+
   button {
     display: block;
     color:  white;
