@@ -68,10 +68,6 @@ board.addEventListener('click', isGameEnd);
 reset.addEventListener('click', resetGame);
 
 
-
-
-/// TO WORK ON THIS: https://www.codeleaks.io/tic-tac-toe-game-using-html-css-and-javascript/
-
 //my functions to test 
 // added id to spot each cell 
 
@@ -236,7 +232,7 @@ function isGameEnd() {
 
 
     }
-    if (count === 0) {
+    if (!zero && !one && !two && !three && !four && !five && !six && !seven && !eight) {
         isGameActive = false;
         statusDisplay.innerHTML = `It's a tie!`;
 
