@@ -94,7 +94,6 @@ function setPlayer2Win() {
 function isGameEnd() {
 
     // add points each winning game
-
     let zero = document.getElementById('0').innerHTML
     let one = document.getElementById('1').innerHTML
     let two = document.getElementById('2').innerHTML
@@ -104,9 +103,6 @@ function isGameEnd() {
     let six = document.getElementById('6').innerHTML
     let seven = document.getElementById('7').innerHTML
     let eight = document.getElementById('8').innerHTML
-
-
-
 
     if (zero === '🌝' && one === '🌝' && two === '🌝') {
         setPlayer1Win()
