@@ -3,7 +3,8 @@ const board = document.querySelector('.board');
 
 // check if the game is active
 let isGameActive = true;
-
+// counter to check if the board if full
+let count = 0
 // store the reset button in the variable
 const resetButton = document.getElementById('reset');
 const statusDisplay = document.querySelector('.gameStatus');
@@ -71,9 +72,26 @@ reset.addEventListener('click', resetGame);
 //my functions to test 
 // added id to spot each cell 
 
+function setPlayer1Win() {
+    statusDisplay.innerHTML = ` ${player1} You won!`;
+    if (isGameActive) {
+        player1Win++;
+        isGameActive = false;
+        winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
+    }
+}
+
+function setPlayer2Win() {
+    statusDisplay.innerHTML = ` ${player2} You won!`;
+
+    if (isGameActive) {
+        player2Win++;
+        isGameActive = false;
+        winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
+    }
+}
+
 function isGameEnd() {
-    // counter to check if the board if full
-    let count = 0;
 
     // add points each winning game
 
@@ -87,162 +105,49 @@ function isGameEnd() {
     let seven = document.getElementById('7').innerHTML
     let eight = document.getElementById('8').innerHTML
 
-    //reset player to player 1 as first move
 
-    for (let i = 0; i < board.rows.length; i++) {
-        let row = board.rows[i];
-        for (let j = 0; j < row.cells.length; j++) {
-            if (row.cells[j].innerHTML === '') {
-                count++
-            }
-        }
-    }
 
 
     if (zero === '🌝' && one === '🌝' && two === '🌝') {
-        statusDisplay.innerHTML = ` ${player1} You won!`;
-        if (isGameActive) {
-            player1Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
+        setPlayer1Win()
     } else if (zero === '🌚' && one === '🌚' && two === '🌚') {
-        statusDisplay.innerHTML = ` ${player2} You won!`;
-
-        if (isGameActive) {
-            player2Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
+        setPlayer2Win()
     } else if (zero === '🌝' && three === '🌝' && six === '🌝') {
-        statusDisplay.innerHTML = ` ${player1} You won!`;
-
-        if (isGameActive) {
-            player1Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
+        setPlayer1Win()
     } else if (zero === '🌚' && three === '🌚' && six === '🌚') {
-        statusDisplay.innerHTML = ` ${player2} You won!`;
-        if (isGameActive) {
-            player2Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
-
+        setPlayer2Win()
     } else if (three === '🌝' && four === '🌝' && five === '🌝') {
-        statusDisplay.innerHTML = ` ${player1} You won!`;
-
-        if (isGameActive) {
-            player1Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
+        setPlayer1Win()
     } else if (three === '🌚' && four === '🌚' && five === '🌚') {
-        statusDisplay.innerHTML = ` ${player2} You won!`;
-        if (isGameActive) {
-            player2Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
-
-    }
-
-    else if (zero === '🌝' && four === '🌝' && eight === '🌝') {
-        statusDisplay.innerHTML = ` ${player1} You won!`;
-        if (isGameActive) {
-            player1Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
-
-
+        setPlayer2Win()
+    } else if (zero === '🌝' && four === '🌝' && eight === '🌝') {
+        setPlayer1Win()
     } else if (zero === '🌚' && four === '🌚' && eight === '🌚') {
-        statusDisplay.innerHTML = ` ${player2} You won!`;
-        if (isGameActive) {
-            player2Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
-
+        setPlayer2Win()
     } else if (two === '🌝' && five === '🌝' && eight === '🌝') {
-        statusDisplay.innerHTML = ` ${player1} You won!`;
-        if (isGameActive) {
-            player1Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
-
-
+        setPlayer1Win()
     } else if (two === '🌚' && five === '🌚' && eight === '🌚') {
-        statusDisplay.innerHTML = ` ${player2} You won!`;
-        if (isGameActive) {
-            player2Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
-
-
+        setPlayer2Win()
     } else if (one === '🌝' && four === '🌝' && seven === '🌝') {
-        statusDisplay.innerHTML = ` ${player1} You won!`;
-        if (isGameActive) {
-            player1Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
-
+        setPlayer1Win()
     } else if (one === '🌚' && four === '🌚' && seven === '🌚') {
-        statusDisplay.innerHTML = ` ${player2} You won!`;
-        if (isGameActive) {
-            player2Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
-
-
+        setPlayer2Win()
     } else if (two === '🌝' && four === '🌝' && six === '🌝') {
-        statusDisplay.innerHTML = ` ${player1} You won!`;
-        if (isGameActive) {
-            player1Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
-
-
+        setPlayer1Win()
     } else if (two === '🌚' && four === '🌚' && six === '🌚') {
-        statusDisplay.innerHTML = ` ${player2} You won!`;
-        if (isGameActive) {
-            player2Win++;
-            isGameActive = false;
-            winningCounter.innerHTML = `🌝 ${player1Win} || 🌚 ${player2Win} `;
-        }
-
-
-    }
-    if (!zero && !one && !two && !three && !four && !five && !six && !seven && !eight) {
+        setPlayer2Win()
+    } else if (six === '🌝' && seven === '🌝' && eight === '🌝') {
+        setPlayer1Win()
+    } else if (six === '🌚' && seven === '🌚' && eight === '🌚') {
+        setPlayer2Win()
+    } else if (zero !== '' && one !== '' && two !== '' && three !== '' && four !== '' && five !== '' && six !== '' && seven !== '' && eight !== '') {
         isGameActive = false;
         statusDisplay.innerHTML = `It's a tie!`;
-
     }
+
     console.log("Player 1 Winning: " + player1Win)
     console.log("Player 2 Winning: " + player2Win)
-    // console.log("document.getElementById('0').innerHTML " + document.getElementById('0').innerHTML)
-    // if (document.getElementById('1').innerHTML === '') {
 
-    // }
 
 
 }
