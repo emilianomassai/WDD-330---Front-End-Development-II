@@ -1,3 +1,16 @@
+body{
+  background-image: url('/WDD-330---Front-End-Development-II/weeks/week4/teamActivity/image/sky.jpeg');
+  background-size: 94.9% 71%;
+  background-repeat: no-repeat;
+  background-position: 50% 38%;
+
+}
+
+table{
+  table-layout:fixed;
+
+}
+
 .board {
     width: 320px;
     height: 320px;
@@ -8,11 +21,13 @@
   .board tr {
     width: 33.3%;
     height: 33.3%;
+    text-align: center;
+
   }
   .board td {
     border-right: 2px solid;
     border-bottom: 2px solid;
-    color:  gray;
+    color:  white;
 
     font-size: 5em;
     
@@ -26,8 +41,15 @@
     border-bottom: 0;
   }
 
+  #gameTitle{
+    color:  rgb(255, 255, 255);
+
+  }
+
   .gameStatus, .winningCounter {
     text-align: center;
+    color:  rgb(255, 255, 255);
+
   }
 
   button {
