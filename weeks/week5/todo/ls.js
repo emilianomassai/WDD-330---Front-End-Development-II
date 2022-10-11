@@ -4,7 +4,8 @@
 
 function addTask() {
 
-    // adding the input to the localStorage
+    // TODO: Modify this to save array of tasks in the local storage:
+    // adding the input to the localStorage (JSON.stringify -> JSON.parse)
     const newTask = document.getElementById('newTask')
     const taskValue = newTask.value;
     if (taskValue) {
