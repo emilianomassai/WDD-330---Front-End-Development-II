@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <head>
+    <script src="/WDD-330---Front-End-Development-II/js/fetchContent.js"></script>
+
+    <title>TEMPLATE</title>
+  </head>
+  <body>
+    <header></header>
+    <h1>TEMPLATE</h1>
+
+    <a href="/WDD-330---Front-End-Development-II/weeks/week5/index.html"
+      >Go back to Week 5 Page</a
+    >
+
+    <footer></footer>
+  </body>
+</html>
