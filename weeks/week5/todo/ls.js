@@ -2,6 +2,9 @@
 // a value has entered, if so it stores the value to the local storage 
 // and calls the displayTasks() function.
 
+// creating array for the tasks
+var arrayOfTasks = []
+
 function addTask() {
 
     // TODO: Modify this to save array of tasks in the local storage:
@@ -34,8 +37,14 @@ function displayTasks() {
 
         listOfTasks.innerHTML += `${value} <br>`;
 
+        // storing the values of each task inside array
+        arrayOfTasks.push(value)
+
     }
+
+    console.log("JSON: " + JSON.stringify(arrayOfTasks))
 }
+localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
 
 // this delete all the tasks from the localstorage 
 function clearAll() {
