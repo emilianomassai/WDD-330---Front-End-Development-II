@@ -11,6 +11,10 @@
 
       }
 
+h1{
+  text-align: center;
+}
+
       img:hover {
         opacity: 1;
         transition: all 0.3s;

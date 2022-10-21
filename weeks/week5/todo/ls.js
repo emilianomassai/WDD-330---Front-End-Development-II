@@ -12,8 +12,17 @@ function addTask() {
     const newTask = document.getElementById('newTask')
     const taskValue = newTask.value;
     if (taskValue) {
-        console.log('taskValue: ' + taskValue);
-        localStorage.setItem('task', taskValue);
+        console.log('Element to add: ' + taskValue);
+        // localStorage.setItem('task', taskValue);
+
+        // console.log('Localstorage getItem(): ' + localStorage.getItem('task'));
+
+        arrayOfTasks.push(taskValue)
+        console.log('Array: ' + arrayOfTasks.length);
+
+        localStorage.setItem('arrayOfTasks', JSON.stringify(arrayOfTasks));
+        console.log('Localstorage array of Tasks: ' + localStorage.getItem('arrayOfTasks'));
+
         // location.reload();
         // localStorage.setItem('name', 'Pippo');
         // console.log("Localstorage value: " + localStorage.getItem);
@@ -31,20 +40,28 @@ function addTask() {
 function displayTasks() {
     const listOfTasks = document.getElementById('listOfTasks');
 
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const value = localStorage.getItem(key);
+    // listOfTasks.innerHTML = localStorage.getItem('arrayOfTasks');
 
-        listOfTasks.innerHTML += `${value} <br>`;
+    const parsedTasks = JSON.parse(localStorage.getItem('arrayOfTasks'));
+    listOfTasks.innerHTML = '';
+    for (let i = 0; i < parsedTasks.length; i++) {
 
-        // storing the values of each task inside array
-        arrayOfTasks.push(value)
-
+        listOfTasks.innerHTML += parsedTasks[i] + '<br>';
     }
+    // for (let i = 0; i < localStorage.length; i++) {
+    //     const key = localStorage.key(i);
+    //     const value = localStorage.getItem(key);
+
+    //     listOfTasks.innerHTML += `${value} <br>`;
+
+    //     // storing the values of each task inside array
+    //     // arrayOfTasks.push(value)
+
+    // }
 
     console.log("JSON: " + JSON.stringify(arrayOfTasks))
 }
-localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
+// localStorage.setItem('task', JSON.stringify(arrayOfTasks));
 
 // this delete all the tasks from the localstorage 
 function clearAll() {
