@@ -23,9 +23,7 @@ function addTask() {
         localStorage.setItem('arrayOfTasks', JSON.stringify(arrayOfTasks));
         console.log('Localstorage array of Tasks: ' + localStorage.getItem('arrayOfTasks'));
 
-        // location.reload();
-        // localStorage.setItem('name', 'Pippo');
-        // console.log("Localstorage value: " + localStorage.getItem);
+
         displayTasks()
     }
 }
@@ -48,23 +46,7 @@ function displayTasks() {
 
         listOfTasks.innerHTML += parsedTasks[i] + '<br>';
     }
-    // for (let i = 0; i < localStorage.length; i++) {
-    //     const key = localStorage.key(i);
-    //     const value = localStorage.getItem(key);
 
-    //     listOfTasks.innerHTML += `${value} <br>`;
-
-    //     // storing the values of each task inside array
-    //     // arrayOfTasks.push(value)
-
-    // }
 
     console.log("JSON: " + JSON.stringify(arrayOfTasks))
-}
-// localStorage.setItem('task', JSON.stringify(arrayOfTasks));
-
-// this delete all the tasks from the localstorage 
-function clearAll() {
-    localStorage.clear()
-
 }
