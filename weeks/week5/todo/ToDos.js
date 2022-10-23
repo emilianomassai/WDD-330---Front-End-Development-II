@@ -9,7 +9,6 @@ All the user interaction logic is happening here.
 
 // setting the empty array to fill it with tasks
 var arrayOfTasks = []
-
 // each time the page loads, it makes sure to get the tasks saved in the 
 // local storage 
 window.onload = function loadingTasks() {
@@ -80,11 +79,14 @@ for (i = 0; i < close.length; i++) {
     }
 }
 
+
+
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function (ev) {
     if (ev.target.tagName === 'LI') {
         ev.target.classList.toggle('checked');
+
     }
 }, false);
 
