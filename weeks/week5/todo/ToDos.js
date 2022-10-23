@@ -10,11 +10,10 @@ All the user interaction logic is happening here.
 // setting the empty array to fill it with tasks
 var arrayOfTasks = []
 
-
 // each time the page loads, it makes sure to get the tasks saved in the 
 // local storage 
 window.onload = function loadingTasks() {
-    if (localStorage.length != 0) {
+    if (localStorage.length > 0) {
         //pull tasks from local storage
         var tempArray = JSON.parse(localStorage.getItem('arrayOfTasks'))
 
@@ -30,6 +29,8 @@ window.onload = function loadingTasks() {
         var value;
 
         for (i = 0; i < arrayOfTasks.length; i++) {
+            // checkLocalStorage.innerHTML = "You have " + (i + 1) + " tasks left. The values from the array needs to display separately in the page!"
+            // arrayOfTasks.value[i]
 
             // RETRIEVED THE ELEMENTS ONE BY ONE FROM THE ARRAY 
             console.log("Values: " + arrayOfTasks[i])
@@ -47,19 +48,25 @@ window.onload = function loadingTasks() {
         }
 
         deleteTask()
+    } else {
+        localStorage.setItem('arrayOfTasks', JSON.stringify(arrayOfTasks));
     }
 }
 
 function leftTasks(arrayOfTasks) {
-    var checkLocalStorage = document.getElementById("left");
-    if (arrayOfTasks.length === 0) {
-        checkLocalStorage.innerHTML = "Just relax, nothing to do for the moment! 😎"
-    } else if (arrayOfTasks.length > 0 && arrayOfTasks.length < 6) {
-        checkLocalStorage.innerHTML = 'You are doing great! Only ' + arrayOfTasks.length + ' left to do. 💪'
-    } else if (arrayOfTasks.length > 5 && arrayOfTasks.length < 11) {
-        checkLocalStorage.innerHTML = 'Getting busy? ' + arrayOfTasks.length + ' left to do. 🥵'
-    } else {
-        checkLocalStorage.innerHTML = 'Please ask for help. ' + arrayOfTasks.length + ' are too many tasks!! 😵'
+    if (localStorage.length > 0) {
+        arrayOfTasks = JSON.parse(localStorage.getItem('arrayOfTasks'))
+
+        var checkLocalStorage = document.getElementById("left");
+        if (arrayOfTasks.length === 0) {
+            checkLocalStorage.innerHTML = "Just relax, nothing to do for the moment! 😎"
+        } else if (arrayOfTasks.length > 0 && arrayOfTasks.length < 6) {
+            checkLocalStorage.innerHTML = 'You are doing great! Only ' + arrayOfTasks.length + ' left to do. 💪'
+        } else if (arrayOfTasks.length > 5 && arrayOfTasks.length < 11) {
+            checkLocalStorage.innerHTML = 'Getting busy? ' + arrayOfTasks.length + ' left to do. 🥵'
+        } else {
+            checkLocalStorage.innerHTML = 'Please ask for help. ' + arrayOfTasks.length + ' are too many tasks!! 😵'
+        }
     }
 }
 
@@ -96,7 +103,6 @@ function newElement() {
 
         // check if the task exist already in the list
         if (!tempArray.includes(inputValue)) {
-
             document.getElementById("listOfTasks").appendChild(li);
 
             /////DEBUG HOW TO ADD THE VALUES INTO THE ARRAY AND STORE IT INTO LOCAL STORAGE ///
@@ -116,10 +122,8 @@ function newElement() {
             console.log("Local storage: " + localStorage.getItem('arrayOfTasks'))
             leftTasks(tempArray);
 
-
         } else {
             alert("The task exists already! Please enter another one.");
-
         }
     }
     document.getElementById("newTask").value = "";
