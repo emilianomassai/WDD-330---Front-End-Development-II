@@ -18,8 +18,12 @@ var weekItems = [
         url: "/WDD-330---Front-End-Development-II/weeks/week4/index.html"
     },
     {
-        label: "Week 05",
+        label: "Week 05 and 06",
         url: "/WDD-330---Front-End-Development-II/weeks/week5/index.html"
+    },
+    {
+        label: "Week 07",
+        url: "/WDD-330---Front-End-Development-II/weeks/week7/index.html"
     }
 ]
 
