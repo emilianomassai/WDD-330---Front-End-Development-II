@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/WDD-330---Front-End-Development-II/js/fetchContent.js"></script>
+
+    <title>Notes of Week 7</title>
+  </head>
+
+  <body>
+    <header></header>
+    <h1>Notes of Week 7</h1>
+
+    <h2>Chapter 11: Further Functions</h2>
+
+    <ul>
+      <li>
+        <h3>Function Properties and Methods</h3>
+        <p>
+          The fact that functions are first-class objects means they can have
+          properties and methods themselves. 
+        </p>
+      </li>
+
+      <li>
+        <h3>Custom Properties</h3>
+        <p>
+          There is nothing to stop you adding your own properties to functions
+          in the same way that you can add properties to any object in
+          JavaScript. 
+        </p>
+      </li>
+
+      <li>
+        <h3>Memoization</h3>
+        <p>
+          A useful feature of this is that it provides result caching,
+          or memoization. If a function takes some time to compute a return
+          value, we can save the result in a cache property.
+        </p>
+      </li>
+
+      <li>
+        <h3>Immediately Invoked Function Expressions</h3>
+        <p>
+          An Immediately Invoked Function Expression – or IIFE – (pronounced
+          'iffy') is an anonymous function that, as the name suggests, is
+          invoked as soon as it’s defined. This is a useful way of performing a
+          task while keeping any variables wrapped up within the scope of the
+          function.
+        </p>
+        <pre><code>(function(){
+          const temp = 'World';
+          console.log(`Hello ${temp}`);
+          })();
+          << 'Hello World'
+        </code></pre>
+      </li>
+      <li>
+        <h3>Function Properties and Methods</h3>
+        <p>
+          The fact that functions are first-class objects means they can have
+          properties and methods themselves. For example, all functions have
+          a length property that returns the number of parameters the function
+          has.
+        </p>
+      </li>
+
+      <li>
+        <h3>Call and Apply Methods</h3>
+        <p>
+          The call() method can be used to set the value of this inside a
+          function to an object that is provided as the first argument. In the
+          following example, the sayHello() function refers to an unspecific
+          object called this that has a property called name:
+        </p>
+
+        <pre><code>function sayHello(){
+          return `Hello, my name is ${ this.name }`;
+          }
+        </code></pre>
+      </li>
+
+      <li>
+        <h3>Custom Properties</h3>
+        <p>
+          There is nothing to stop you adding your own properties to functions
+          in the same way that you can add properties to any object in
+          JavaScript.
+        </p>
+      </li>
+
+      <li>
+        <h3>Functions that Define and Rewrite Themselves</h3>
+        <p>
+          The dynamic nature of JavaScript means that a function is able to not
+          only call itself, but define itself, and even redefine itself. This is
+          done by assigning an anonymous function to a variable that has the
+          same name as the function.
+        </p>
+      </li>
+
+      <li>
+        <h3>Callbacks</h3>
+        <p>
+          They’re functions passed to other functions as arguments and then
+          invoked inside the function they are passed to.
+        </p>
+      </li>
+
+      <li>
+        <h3>Promises</h3>
+        <p>
+          A promise represents the future result of an asynchronous operation.
+        </p>
+      </li>
+
+      <li>
+        <h3>Async Functions</h3>
+        <p>
+          These functions are preceded by the async keyword and allow you to
+          write asynchronous code as if it was synchronous. This is achieved by
+          using the await operator before an asynchronous function. This will
+          wrap the return value of the function in a promise that can then be
+          assigned to a variable. The next line of code is not executed until
+          the promise is resolved.
+        </p>
+      </li>
+
+      <li>
+        <h3>Closures</h3>
+        <p>
+          Closures are one of JavaScript’s most powerful features, but they can
+          be difficult to get your head around initially. A closure is a
+          reference to a variable that was created inside the scope of another
+          function, but is then kept alive and used in another part of the
+          program.
+        </p>
+      </li>
+
+      <li>
+        <h3>Generators</h3>
+        <p>
+          ES6 introduced support for generators. These are special functions
+          used to produce iterators that maintain the state of a value. To
+          define a generator function, an asterisk symbol (*) is placed after
+          the function declaration, like so:
+        </p>
+
+        <pre><code>function* exampleGenerator() {
+          // code for the generator goes here
+          }
+        </code></pre>
+      </li>
+
+      <li>
+        <h3>Currying</h3>
+        <p>
+          Currying is a process that involves the partial application of
+          functions. It’s named after the logician Haskell Curry. A function is
+          said to be curried when not all arguments have been supplied to the
+          function, so it returns another function that retains the arguments
+          already provided, and expects the remaining arguments that were
+          omitted when the original function was called.
+        </p>
+      </li>
+    </ul>
+
+    <h2>Chapter 13: Ajax</h2>
+    <ul>
+      <p>
+        Ajax is a technique that allows web pages to communicate asynchronously
+        with a server, and it dynamically updates web pages without reloading.
+        This enables data to be sent and received in the background, as well as
+        portions of a page to be updated in response to user events, while the
+        rest of the program continues to run.
+      </p>
+
+      <li>
+        <h3>Clients and Servers</h3>
+        <p>
+          The web of computers known as the internet can be separated into two
+          parts: clients and servers. Ajax allows JavaScript to request
+          resources from a server on behalf of the client. The resources
+          requested are usually JSON data or small fragments of text or HTML
+          rather than a whole web page.
+        </p>
+      </li>
+
+      <li>
+        <h3>The Fetch API</h3>
+        <p>
+          The fetch() method returns a promise that resolves to the response
+          returned from the URL that was provided as an argument. JSON is
+          probably the most common format for AJAX responses. The json() method
+          is used to deal with these by transforming a stream of JSON data into
+          a promise that resolves to a JavaScript object.
+        </p>
+      </li>
+    </ul>
+
+    <a href="/WDD-330---Front-End-Development-II/weeks/week7/index.html"
+      >Go back to Week 7 Page</a
+    >
+    <footer></footer>
+  </body>
+</html>
