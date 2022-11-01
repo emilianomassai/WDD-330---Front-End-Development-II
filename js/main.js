@@ -2,32 +2,32 @@
 var weekItems = [
     {
         label: "Week 01",
-        url: "/weeks/week1/index.html"
+        url: "../weeks/week1/index.html"
     },
 
     {
         label: "Week 02",
-        url: "/weeks/week2/index.html"
+        url: "../weeks/week2/index.html"
     },
     {
         label: "Week 03",
-        url: "/weeks/week3/index.html"
+        url: "../weeks/week3/index.html"
     },
     {
         label: "Week 04",
-        url: "/weeks/week4/index.html"
+        url: "../weeks/week4/index.html"
     },
     {
         label: "Week 05 and 06",
-        url: "/weeks/week5/index.html"
+        url: "../weeks/week5/index.html"
     },
     {
         label: "Week 07",
-        url: "/weeks/week7/index.html"
+        url: "../weeks/week7/index.html"
     },
     {
         label: "Week 08",
-        url: "/weeks/week8/index.html"
+        url: "../weeks/week8/index.html"
     }
 ]
 

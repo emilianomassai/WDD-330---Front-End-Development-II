@@ -1,6 +1,6 @@
 // Some Ajax used to fetch header and footer 
 
-fetch("/codeSnippets/header.html")
+fetch("../codeSnippets/header.html")
     .then(response => {
         return response.text()
     })
@@ -9,7 +9,7 @@ fetch("/codeSnippets/header.html")
     });
 
 
-fetch("/codeSnippets/footer.html")
+fetch("../codeSnippets/footer.html")
     .then(response => {
         return response.text()
     })
