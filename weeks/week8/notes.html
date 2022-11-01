@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/WDD-330---Front-End-Development-II/js/fetchContent.js"></script>
+
+    <title>Notes of Week 8</title>
+  </head>
+
+  <body>
+    <header></header>
+    <h1>Notes of Week 8</h1>
+    <p>From the book: HTML5 & CSS3 FOR THE REAL WORLD: 2ND EDITION</p>
+
+    <h2>Chapter 8: CSS3 Transforms and Transitions</h2>
+
+    <h3>Transforms</h3>
+    <p>
+      The fact that functions are first-class objects means they can have
+      properties and methods themselves. 
+    </p>
+
+    <ul>
+      <li>
+        <h3>Custom Properties</h3>
+        <p>
+          The CSS3 transform property lets you lets you translate, rotate,
+          scale, and/or skew any element on the page. We can manipulate an
+          element’s appearance using transform functions.
+        </p>
+      </li>
+
+      <li>
+        <h3>Translation</h3>
+        <p>
+          Translation functions allow you to move elements left, right, up, or
+          down. These functions are similar to the behavior of position:
+          relative; when declaring top and left, moving elements up and down or
+          left and right along the x and y axes.
+        </p>
+      </li>
+
+      <li>
+        <h3>Scaling</h3>
+        <p>
+          The scale(x,y) function scales an element by the defined factors
+          horizontally then vertically. If only one value is provided, it will
+          be used for both the x and y values, growing or shrinking your element
+          or pseudo-element while maintaining the original aspect ratio.
+        </p>
+      </li>
+      <li>
+        <h3>Rotation</h3>
+        <p>
+          The rotate() function rotates an element around the point of origin by
+          a specified angle value. As with scale, by default the point of origin
+          is the element’s center.
+        </p>
+      </li>
+
+      <li>
+        <h3>Skew</h3>
+        <p>
+          The skew(x,y) function specifies a skew along the x and y axes. As
+          you’d expect, the x specifies the skew on the x axis, and the y
+          specifies the skew on the y axis.
+        </p>
+      </li>
+
+      <li>
+        <h3>Changing the Origin of the Transform</h3>
+        <p>
+          You can control the origin from which your transforms are applied.
+          This is done using the transform-origin property. It has the same
+          syntax as the background-position property, and defaults to the center
+          of the object (so that scales and rotations will be around the center
+          of the box by default).
+        </p>
+      </li>
+    </ul>
+
+    <h3>Transitions</h3>
+    <p>
+      Transitions allow the values of CSS properties to change over time,
+      essentially providing simple animations. For example, if a link changes
+      color on hover, you can have it gradually fade from one color to the other
+      instead of a sudden change. They’re both transitions, but with the CSS
+      transition property the color transition can be gradual.
+    </p>
+
+    <ul>
+      <li>
+        <h3>The transition-duration Property</h3>
+        <p>
+          The transition-duration property sets how long the transition will
+          take: the duration of time it takes to go from the default state to
+          the transitioned state.
+        </p>
+      </li>
+
+      <li>
+        <h3>The transition-timing-function Property</h3>
+        <p>
+          The transition-timing-function lets you control the pace of the
+          transition in even more granular detail. Do you want your animation to
+          start off slow and become faster, start off fast and end slower,
+          advance at an even keel, or some other variation.
+        </p>
+      </li>
+
+      <li>
+        <h3>Multiple Transitions</h3>
+        <p>
+          The transition properties allow for multiple transitions in one call.
+          For example, if we want to change the color at the same time as
+          changing the rotation and size, we can.
+        </p>
+      </li>
+
+      <li>
+        <h3>Animations</h3>
+        <p>
+          Transitions animate elements over time; however, they’re limited in
+          what they can do. You can define starting and ending states, but
+          there’s no fine-grained control over any intermediate states. CSS
+          animations, unlike transitions, allow you to control each step of an
+          animation via keyframes.
+        </p>
+      </li>
+
+      <li>
+        <h3>Keyframes</h3>
+        <p>
+          To animate an element in CSS, you first create a named animation, then
+          attach it to an element in that element’s property declaration block.
+          Animations in themselves don’t do anything; in order to animate an
+          element, you’ll need to associate the animation with that element.
+        </p>
+      </li>
+    </ul>
+
+    <h2>Chapter 12: Canvas, SVG, and Drag and Drop</h2>
+
+    <h3>Canvas</h3>
+    <p>
+      With canvas, we can draw shapes and lines, arcs and text, gradients and
+      patterns. In addition, canvas gives us the power to manipulate pixels in
+      images and even video.
+    </p>
+
+    <ul>
+      <li>
+        <h3>A Bit of Canvas History</h3>
+        <p>
+          Canvas was first developed by Apple. Since they already had a
+          framework—Quartz 2D—for drawing in two-dimensional space, they went
+          ahead and based many of the concepts of what would come to be known as
+          HTML5’s canvas on that framework.
+        </p>
+      </li>
+      <li>
+        <h3>Creating a canvas Element</h3>
+        <p>
+          The text in between the canvas tags will only be shown if the canvas
+          element is not supported by the visitor’s browser. Since drawing on
+          the canvas is done using JavaScript, we’ll need a way to grab the
+          element from the DOM.
+        </p>
+      </li>
+      <li>
+        <h3>Drawing on the Canvas</h3>
+        <p>
+          All drawing on the canvas happens via the Canvas JavaScript API. In
+          this chapter, we’ll walk you through several different things you can
+          draw onto the canvas element. Each example will have a new function,
+          and all of these different functions live in a file called canvas.js.
+        </p>
+      </li>
+      <li>
+        <h3>Manipulating Images</h3>
+        <p>
+          Redrawing an image element from the page onto a canvas is fairly
+          unexciting. It’s really no different from using an img element. Where
+          it does become interesting is how we can manipulate an image after
+          we’ve drawn it into the canvas. Once we’ve drawn an image on the
+          canvas, we can use the getImageData method from the Canvas API to
+          manipulate the pixels of that image. For example, if we wanted to
+          convert our logo from color to black and white, we can do so using
+          methods in the Canvas API.
+        </p>
+      </li>
+      <li>
+        <h3>Manipulating Video with Canvas</h3>
+        <p>
+          The draw function, which is a custom function that we’ll define, will
+          be called when the play event fires. It will be passed the video,
+          context, and canvas objects. We’re using an anonymous function here
+          instead of a normal named function because we’re unable to actually
+          pass parameters to named functions when declaring them as event
+          handlers without wrapping them in an another function. Since we want
+          to pass several parameters to the draw function— video, context, and
+          canvas —we must call it from inside an anonymous function.
+        </p>
+      </li>
+    </ul>
+
+    <h3>SVG</h3>
+    <p>
+      SVG stands for Scalable Vector Graphics, a specific file format that
+      allows you to describe vector graphics using XML. A major selling point of
+      vector graphics in general is that, unlike bitmap images (such as GIF,
+      JPEG, PNG, and TIFF), vector images preserve their quality even as you
+      blow them up or shrink them down. We can use SVG to do many of the same
+      tasks we can do with canvas, including drawing paths, shapes, text,
+      gradients, and patterns. There are also very useful open-source tools
+      relevant to SVG, some of which we’ll leverage in order to add a spinning
+      progress indicator to The HTML5 Herald ’s geolocation widget.
+    </p>
+
+    <h3>Canvas versus SVG</h3>
+    <ul>
+      <li>
+        <p>
+          Canvas allows for pixel manipulation, as we saw when we turned our
+          video from color to black and white. One downside of canvas is that it
+          operates in what’s known as immediate mode. This means that if you
+          ever want to add more to the canvas, you’re unable to simply add to
+          what’s already there. Every time you finish drawing a shape, the
+          canvas no longer has access to that shape, because it won’t persist as
+          an object that you can modify. So if you want to add to what you’ve
+          already drawn on the canvas, you must redraw the new shape from
+          scratch. Still, canvas does allow you to save the images you create to
+          a PNG or JPEG file.
+        </p>
+      </li>
+      <li>
+        <p>
+          By contrast, what you draw to SVG is accessible via the DOM, because
+          its mode is retained mode, meaning that the structure of the image is
+          preserved in the XML document that describes it. SVG also has, at this
+          time, a more complete set of tools to help you work with it, such as
+          the Raphaël library and Inkscape. However, since SVG is a file
+          format—rather than a set of methods that allows you to dynamically
+          draw on a surface—you can’t manipulate SVG images the way you can
+          manipulate pixels on canvas. It would have been impossible, for
+          example, to use SVG to convert our color video to black and white as
+          we did with canvas.
+        </p>
+      </li>
+    </ul>
+
+    <h3>Drag and Drop</h3>
+    <p>
+      There are two major kinds of functionality you can implement with Drag and
+      Drop: dragging files from your computer into a web page—in combination
+      with the File API—or dragging elements into other elements on the same
+      page. In this chapter, we’ll focus on the latter.
+    </p>
+    <p>There are several steps to adding drag and drop to your page:</p>
+
+    <ol>
+      <li>
+        Set the draggable attribute on any HTML elements you’d like to be
+        draggable.
+      </li>
+      <li>
+        Add an event listener for the dragstart event on any draggable HTML
+        elements.
+      </li>
+      <li>
+        Add an event listener for the dragover and drop events on any elements
+        that you want to have accept dropped items.
+      </li>
+    </ol>
+
+    <h3>Accepting Dropped Elements</h3>
+    <p>
+      The reason is that by default, elements on the page aren’t set up to
+      receive dragged items. In order to override the default behavior on a
+      specific element, we must stop it from happening. We can do that by
+      creating two more event listeners. The two events we need to monitor for
+      are dragover and drop. As you’d expect, dragover fires when you drag an
+      item over an element, and drop fires when you drop an item on it.
+    </p>
+
+    <a href="/WDD-330---Front-End-Development-II/weeks/week8/index.html"
+      >Go back to Week 8 Page</a
+    >
+    <footer></footer>
+  </body>
+</html>
