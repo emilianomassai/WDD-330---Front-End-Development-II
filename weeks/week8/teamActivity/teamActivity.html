@@ -14,6 +14,8 @@
     <h2>List of Starships</h2>
 
     <div id="ship"></div>
+    <button id="previous">prev</button>
+    <button id="next" onclick="">next</button>
 
     <span>
       <script>
@@ -33,18 +35,29 @@
 
           const mainUL = document.createElement("ul");
 
+          prevNextPage(data);
+
           for (let i = 0; i < data.results.length; i++) {
             const shipLI = document.createElement("li");
             shipLI.innerHTML = data.results[i].name;
-
             // append ship list to mainUL
             mainUL.appendChild(shipLI);
           }
           // append mainUL to the div element
           document.getElementById("ship").appendChild(mainUL);
         }
-
         getStarship();
+
+        function prevNextPage(data) {
+          console.log("Next: " + data.next);
+          document
+            .getElementById("next")
+            .addEventListener("click", getStarship);
+
+          console.log("Prev: " + data.prev);
+
+          //   document.getElementById("ship").innerHTML = "Hello World!";
+        }
       </script>
     </span>
 

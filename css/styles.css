@@ -38,6 +38,21 @@ p, li, #numberOutput, #input, #resultNumber{
     color: #FFFF;
   }
 
+  button {
+    color:  white;
+    background-color: #0076b6;
+    font-size: 15px;
+    font-family: "Lucida Sans Unicode", Verdana, sans-serif;
+    padding: 10px 60px;
+  }
+  
+  button:hover {
+    color: #0076b6;
+    background-color: white;
+    box-shadow: -3px 15px 10px rgba(0, 0, 0, 0.5);
+    transition: 0.3s; /* Add transition on hover */
+  }
+  
   a {
     display: block;
     color: #525252;
