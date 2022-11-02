@@ -11,24 +11,42 @@
     <header></header>
     <h1>Team Activity: SWAPI</h1>
 
-    <script>
-      // set all the links on the constants
-      const swapi_people_url = "https://swapi.dev/api/people";
-      const swapi_planets_url = "https://swapi.dev/api/planets/";
-      const swapi_films_url = "https://swapi.dev/api/films";
-      const swapi_species_url = "https://swapi.dev/api/species/";
-      const swapi_vehicles_url = "https://swapi.dev/api/vehicles/";
-      const swapi_starships_url = "https://swapi.dev/api/starships/";
+    <h2>List of Starships</h2>
 
-      // change the url in the function to fetch different kind of data
-      async function getPeople() {
-        const response = await fetch(swapi_species_url);
-        const data = await response.json();
-        console.log(data);
-      }
+    <div id="ship"></div>
 
-      getPeople();
-    </script>
+    <span>
+      <script>
+        // set all the links on the constants
+        const swapi_people_url = "https://swapi.dev/api/people";
+        const swapi_planets_url = "https://swapi.dev/api/planets/";
+        const swapi_films_url = "https://swapi.dev/api/films";
+        const swapi_species_url = "https://swapi.dev/api/species/";
+        const swapi_vehicles_url = "https://swapi.dev/api/vehicles/";
+        const swapi_starships_url = "https://swapi.dev/api/starships/";
+
+        // change the url in the function to fetch different kind of data
+        async function getStarship() {
+          const response = await fetch(swapi_starships_url);
+          const data = await response.json();
+          console.log(data);
+
+          const mainUL = document.createElement("ul");
+
+          for (let i = 0; i < data.results.length; i++) {
+            const shipLI = document.createElement("li");
+            shipLI.innerHTML = data.results[i].name;
+
+            // append ship list to mainUL
+            mainUL.appendChild(shipLI);
+          }
+          // append mainUL to the div element
+          document.getElementById("ship").appendChild(mainUL);
+        }
+
+        getStarship();
+      </script>
+    </span>
 
     <a href="/WDD-330---Front-End-Development-II/weeks/week8/index.html"
       >Go back to Week 8 Page</a
