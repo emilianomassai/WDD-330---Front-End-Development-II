@@ -14,28 +14,38 @@
     <h2>List of Starships</h2>
 
     <div id="ship"></div>
-    <button id="previous">prev</button>
-    <button id="next" onclick="">next</button>
+    <button id="previous" onclick="goPrev()">prev</button>
+    <button id="next" onclick="goNext()">next</button>
 
     <span>
       <script>
         // set all the links on the constants
-        const swapi_people_url = "https://swapi.dev/api/people";
-        const swapi_planets_url = "https://swapi.dev/api/planets/";
-        const swapi_films_url = "https://swapi.dev/api/films";
-        const swapi_species_url = "https://swapi.dev/api/species/";
-        const swapi_vehicles_url = "https://swapi.dev/api/vehicles/";
-        const swapi_starships_url = "https://swapi.dev/api/starships/";
+        var swapi_people_url = "https://swapi.dev/api/people";
+        var swapi_planets_url = "https://swapi.dev/api/planets/";
+        var swapi_films_url = "https://swapi.dev/api/films";
+        var swapi_species_url = "https://swapi.dev/api/species/";
+        var swapi_vehicles_url = "https://swapi.dev/api/vehicles/";
+        var swapi_starships_url = "https://swapi.dev/api/starships/";
+
+        /**PLEASE CHANGE THE FOLLOWING LINK TO DISPLAY DIFFERENT VALUES*/
+
+        // a variable used to quickly switch the SWAPI data
+        var linkUsed = swapi_species_url;
+
+        // to get the next and previous links from the API
+        var prevLink = "";
+        var nextLink = "";
 
         // change the url in the function to fetch different kind of data
         async function getStarship() {
-          const response = await fetch(swapi_starships_url);
+          const response = await fetch(linkUsed);
           const data = await response.json();
           console.log(data);
 
           const mainUL = document.createElement("ul");
-
-          prevNextPage(data);
+          console.log("SetprevLink: " + data.previous);
+          setPrevLink(data.previous);
+          setNextLink(data.next);
 
           for (let i = 0; i < data.results.length; i++) {
             const shipLI = document.createElement("li");
@@ -43,20 +53,48 @@
             // append ship list to mainUL
             mainUL.appendChild(shipLI);
           }
+
           // append mainUL to the div element
           document.getElementById("ship").appendChild(mainUL);
         }
         getStarship();
 
-        function prevNextPage(data) {
-          console.log("Next: " + data.next);
-          document
-            .getElementById("next")
-            .addEventListener("click", getStarship);
+        function goPrev() {
+          if (!getPrevLink()) {
+            console.log("No link found.");
+            return;
+          } else linkUsed = getPrevLink();
+          document.getElementById("ship").innerHTML = "";
+          getStarship();
 
-          console.log("Prev: " + data.prev);
+          console.log("Prev Link " + linkUsed);
+        }
 
-          //   document.getElementById("ship").innerHTML = "Hello World!";
+        function goNext() {
+          if (!getNextLink()) {
+            console.log("No link found.");
+            return;
+          } else linkUsed = getNextLink();
+          document.getElementById("ship").innerHTML = "";
+          getStarship();
+
+          console.log("Next Link " + linkUsed);
+        }
+
+        function setPrevLink(value) {
+          prevLink = value;
+        }
+
+        function setNextLink(value) {
+          nextLink = value;
+        }
+
+        function getPrevLink() {
+          return prevLink;
+        }
+
+        function getNextLink() {
+          return nextLink;
         }
       </script>
     </span>
