@@ -11,7 +11,7 @@
     <header></header>
     <h1>Team Activity: SWAPI</h1>
 
-    <h2>List of Starships</h2>
+    <h2>List of Starships:</h2>
 
     <div id="ship"></div>
     <button id="previous" onclick="goPrev()">prev</button>
@@ -20,11 +20,11 @@
     <span>
       <script>
         // set all the links on the constants
-        var swapi_people_url = "https://swapi.dev/api/people";
-        var swapi_planets_url = "https://swapi.dev/api/planets/";
-        var swapi_films_url = "https://swapi.dev/api/films";
-        var swapi_species_url = "https://swapi.dev/api/species/";
-        var swapi_vehicles_url = "https://swapi.dev/api/vehicles/";
+        // var swapi_people_url = "https://swapi.dev/api/people";
+        // var swapi_planets_url = "https://swapi.dev/api/planets/";
+        // var swapi_films_url = "https://swapi.dev/api/films";
+        // var swapi_species_url = "https://swapi.dev/api/species/";
+        // var swapi_vehicles_url = "https://swapi.dev/api/vehicles/";
         var swapi_starships_url = "https://swapi.dev/api/starships/";
 
         /**PLEASE CHANGE THE FOLLOWING LINK TO DISPLAY DIFFERENT VALUES*/
@@ -35,6 +35,12 @@
         // to get the next and previous links from the API
         var prevLink = "";
         var nextLink = "";
+
+        // to get all the details of the selected ship
+        var name = "";
+        var model = "";
+        var manufacturer = "";
+        var starship_class = "";
 
         // change the url in the function to fetch different kind of data
         async function getStarship() {
@@ -49,7 +55,25 @@
 
           for (let i = 0; i < data.results.length; i++) {
             const shipLI = document.createElement("li");
+            const shipA = document.createElement("a");
             shipLI.innerHTML = data.results[i].name;
+
+            setDetails(
+              data.results[i].name,
+              data.results[i].model,
+              data.results[i].manufacturer,
+              data.results[i].starship_class
+            );
+
+            // shipA.href = data.results[i].model;
+            shipA.setAttribute(
+              // "class",
+              // "details",
+              "Onclick",
+              "displayDetails()"
+            );
+            shipLI.appendChild(shipA);
+
             // append ship list to mainUL
             mainUL.appendChild(shipLI);
           }
@@ -81,6 +105,11 @@
           console.log("Next Link " + linkUsed);
         }
 
+        function displayDetails() {
+          // console.log("Magic!");
+          getDetails();
+        }
+
         function setPrevLink(value) {
           prevLink = value;
         }
@@ -95,6 +124,20 @@
 
         function getNextLink() {
           return nextLink;
+        }
+
+        function setDetails(iName, iModel, iManufacturer, iStarship_class) {
+          name = iName;
+          model = iModel;
+          manufacturer = iManufacturer;
+          starship_class = iStarship_class;
+        }
+
+        function getDetails() {
+          console.log("Name: " + name);
+          console.log("Model: " + model);
+          console.log("Manufacturer: " + manufacturer);
+          console.log("Starship class: " + starship_class);
         }
       </script>
     </span>
