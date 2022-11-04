@@ -36,12 +36,6 @@
         var prevLink = "";
         var nextLink = "";
 
-        // to get all the details of the selected ship
-        var name = "";
-        var model = "";
-        var manufacturer = "";
-        var starship_class = "";
-
         // change the url in the function to fetch different kind of data
         async function getStarship() {
           const response = await fetch(linkUsed);
@@ -55,25 +49,26 @@
 
           for (let i = 0; i < data.results.length; i++) {
             const shipLI = document.createElement("li");
-            const shipA = document.createElement("a");
             shipLI.innerHTML = data.results[i].name;
 
-            setDetails(
-              data.results[i].name,
-              data.results[i].model,
-              data.results[i].manufacturer,
-              data.results[i].starship_class
-            );
+            const shipDIV = document.createElement("div");
 
-            // shipA.href = data.results[i].model;
-            shipA.setAttribute(
-              // "class",
-              // "details",
-              "Onclick",
-              "displayDetails()"
-            );
-            shipLI.appendChild(shipA);
+            shipDIV.innerHTML = `
+                    <ul>
+                      <li>Name:  ${data.results[i].name}</li>
+                      <li>Model:  ${data.results[i].model}</li>
+                      <li>Manufacturer:  ${data.results[i].manufacturer}</li>
+                      <li>Starship class:  ${data.results[i].starship_class}</li>                      
+                      <li>Cost in credits:  ${data.results[i].cost_in_credits}</li>
+                   </ul><br>`;
 
+            shipDIV.style.display = "none";
+
+            shipLI.setAttribute("id", "detail" + i);
+            shipDIV.setAttribute("id", "content" + i);
+
+            // shipLI.appendChild(shipA);
+            shipLI.appendChild(shipDIV);
             // append ship list to mainUL
             mainUL.appendChild(shipLI);
           }
@@ -105,9 +100,8 @@
           console.log("Next Link " + linkUsed);
         }
 
-        function displayDetails() {
+        function displayDetails(i) {
           // console.log("Magic!");
-          getDetails();
         }
 
         function setPrevLink(value) {
@@ -126,19 +120,29 @@
           return nextLink;
         }
 
-        function setDetails(iName, iModel, iManufacturer, iStarship_class) {
-          name = iName;
-          model = iModel;
-          manufacturer = iManufacturer;
-          starship_class = iStarship_class;
-        }
+        // Create event listener
+        document.addEventListener("click", (e) => {
+          // Retrieve id from clicked element
+          let elementId = e.target.id;
+          // If element has id
+          if (elementId !== "") {
+            console.log(elementId);
+            var str = elementId;
+            var res = str.slice(-1);
+            var contentId = "content" + res;
+            var x = document.getElementById(contentId);
 
-        function getDetails() {
-          console.log("Name: " + name);
-          console.log("Model: " + model);
-          console.log("Manufacturer: " + manufacturer);
-          console.log("Starship class: " + starship_class);
-        }
+            if (x.style.display === "none") {
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+          }
+          // If element has no id
+          else {
+            console.log("An element without an id was clicked.");
+          }
+        });
       </script>
     </span>
 
