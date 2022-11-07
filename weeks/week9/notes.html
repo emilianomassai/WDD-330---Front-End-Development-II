@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/WDD-330---Front-End-Development-II/js/fetchContent.js"></script>
+    <title>Notes of Week 9</title>
+  </head>
+
+  <body>
+    <header></header>
+    <h1>Notes of Week 9</h1>
+    <p>From the book: Javascript: Novice to ninja</p>
+
+    <h2>Chapter 9: The Window Object</h2>
+
+    <p>
+      In a browser environment the global object is the window object, which
+      represents the browser window that contains a web page.
+    </p>
+
+    <ul>
+      <li>
+        <h3>The Browser Object Model</h3>
+        <p>
+          It is a collection of properties and methods that contain information
+          about the browser and computer screen. Remember that JavaScript can be
+          run in different environments. The BOM only makes sense in a browser
+          environment. Global variables are actual properties of a global
+          object. In a browser environment, the global object is the window
+          object.
+          <h4>Dialogs</h4>
+          <p>There are some functions that produced dialogs in the browsers: alert(), confirm() and prompt(). These are not part of the ECMAScript standard, although all major browsers support them as methods of the window object.</p>
+        </p>
+      </li>
+
+      <li>
+        <h3>Browser Information
+        </h3>
+        <p>
+          The window object has a navigator property that returns a reference to the Navigator object. The Navigator object contains information about the browser being used. Its userAgent property will return information about the browser and operating system being used. 
+        </p>
+      </li>
+
+      <li>
+        <h3>The Browser History</h3>
+        <p>
+          The window.history property can be used to access information about any previously visited pages in the current browser session. Avoid confusing this with the new HTML5 History API.The window.history.length property shows how many pages have been visited before arriving at the current page.
+        </p>
+      </li>
+      <li>
+        <h3>Controlling Windows</h3>
+        <p>
+          A new window can be opened using the window.open() method. This takes the URL of the page to be opened as its first parameter, the window title as its second parameter, and a list of attributes as the third parameter. 
+        </p>
+      </li>
+
+      <li>
+        <h3>Screen Information
+        </h3>
+        <p>
+          The window.screen object contains information about the screen the browser is displayed on. 
+        </p>
+      </li>
+
+      <li>
+        <h3>The Document Object</h3>
+        <p>
+          Each window object contains a document object. This object has properties and methods that deal with the page that has been loaded into the window.
+        </p>
+      </li>
+   
+<li>
+    <h3>Cookies</h3>
+    <p>
+      Cookies are small files that are saved locally on a user’s computer. They were invented by Netscape as a way of getting round HTTP being a stateless protocol. This means that a browser does not remember anything from one request to another. So every time a user visits a page, nothing about any previous visits is remembered. Cookies can be used to sidestep this problem by storing information that can then be retrieved between requests.
+    </p>
+  </li>
+
+      <li>
+        <h3>Timing Functions</h3>
+        <p>
+         <h4>setTimeout()</h4> 
+          The window object provides some useful methods for scheduling the execution of a function, and for repeatedly executing functions at regular intervals.The window.setTimeout() method accepts a callback to a function as its first parameter and a number of milliseconds as its second parameter. 
+        </p>
+      </li>
+
+      <li>
+        <h3>Animation</h3>
+        <p>
+          The setTimeOut() and setInterval() methods can be used to animate elements on a web page. As an example, let’s create a web page that shows a colored square, and make it rotate. Create a folder called 'animation' that contains files called index.html, styles.css and main.js. 
+        </p>
+      </li>
+</ul>
+
+    <h2>Chapter 14: HTML5 APIs</h2>
+<p>HTML5 is the latest version of the Hypertext Markup Language used to create web pages. The latest iteration is HTML 5.1, which finally became a W3C recommendation in November 2016.
+  HTML5 was for HTML what ES6 was for JavaScript – it added a large number of new features to the specification. It also went beyond the actual markup language and brought together a number of related technologies such as CSS and JavaScript.</p>
+
+ 
+    <ul>
+      <li>
+        <h3>HTML5</h3>
+        <p>
+          The HTML5 specification is separated into modules that allow different features to be developed at different paces then implemented without having to wait for other features to be completed. It also means that when a previously unforeseen development occurs, a new module can be created to cater for it. Modules can be at different stages of maturity, from ideas to full implementation. 
+        </p>
+      </li>
+      <li>
+        <h3>The data- Attribute</h3>
+        <p>
+          The data- attribute is a way of embedding data in a web page using custom attributes that are ignored by the browser. They’re also private to a page, so are not intended to be used by an external service – their sole purpose is to be used by a JavaScript program. This means they’re perfect for adding data that can be used as a hook that the program utilizes to access information about a particular element on the page.
+        </p>
+      </li>
+      <li>
+        <h3>HTML5 APIs
+        </h3>
+        <p>
+          The HTML5 specification contains a number of APIs that help to gain access to hardware, such as cameras, batteries, geolocation, and the graphics card. Hardware evolves quickly, and APIs are frequently introduced to give developers access, and control new features that appear in the latest devices.
+
+
+        </p>
+      </li>
+      <li>
+        <h3>HTML5 Web Storage</h3>
+        <p>
+          The Web Storage API provides a key-value store on the client’s computer that is similar to using cookies but has fewer restrictions, more storage capacity, and is generally easier to use. This makes it perfect for storing information about users, as well as storing application-specific information that can then be used during future sessions.
+        </p>
+      </li>
+      <li>
+        <h3>Geolocation</h3>
+        <p>
+          The Geolocation API is used to obtain the geographical position of the device. This means it can be used to find the user’s exact location, then link to nearby places or measure the speed at which the user is moving. This information can then be used to filter data based on the user's location or speed and direction of travel. An example of this might be a search function that returns results based on your location. Because of privacy concerns, permission to use this has to be granted by the user first.
+        </p>
+      </li>
+
+      <li>
+    <h3>Multimedia</h3>
+    <p>
+      Before HTML5, it was notoriously difficult to display audio and video in browsers, and plugins such as Flash often had to be used. HTML5 introduced the audio and video tags used to insert audio and video clips into a web page. It also introduced a Media API for controlling the playback of the clips using JavaScript.
+    </p>
+  </li>
+
+  <li>
+    <h3>Drawing with Canvas</h3>
+
+   
+        <p>
+          The canvas element was introduced to allow graphics to be drawn onto a web page in real time using JavaScript. A canvas element is a rectangular element on the web page. It has a coordinate system that starts at (0,0) in the top-left corner. To add a canvas element to a page, the canvas tag is used specifying a height and width.
+        </p>
+      </li>
+    
+    </ul>
+
+    
+
+    <a href="index.html">Go back to Week 9 Page</a>
+    <footer></footer>
+  </body>
+</html>
