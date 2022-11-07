@@ -28,6 +28,10 @@ var weekItems = [
     {
         label: "Week 08",
         url: "weeks/week8/index.html"
+    },
+    {
+        label: "Week 09",
+        url: "weeks/week9/index.html"
     }
 ]
 
