@@ -61,6 +61,8 @@
         e.target.classList.remove("playing");
       }
 
+      // bounding the audio file to the key displayed on the page
+      // using addEventListener to play the sound when pressing the key
       function playSound(e) {
         const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
         const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
