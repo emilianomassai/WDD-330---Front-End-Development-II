@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/WDD-330---Front-End-Development-II/js/fetchContent.js"></script>
+    <title>Notes of Week 10</title>
+  </head>
+
+  <body>
+    <header></header>
+    <h1>Notes of Week 10</h1>
+    <p>
+      From online articles
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation"
+        class="justLink"
+        >MDN: Validating forms</a
+      >
+      and
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
+        class="justLink"
+        >MDN: Using Fetch</a
+      >
+    </p>
+
+    <h2>MDN: Validating forms</h2>
+
+    <p>
+      Client-side validation is an initial check and an important feature of
+      good user experience; by catching invalid data on the client-side, the
+      user can fix it straight away.
+    </p>
+
+    <ul>
+      <li>
+        <h3>What is form validation?</h3>
+        <p>
+          When you enter data, the browser and/or the web server will check to
+          see that the data is in the correct format and within the constraints
+          set by the application. Validation done in the browser is called
+          client-side validation, while validation done on the server is called
+          server-side validation.
+        </p>
+      </li>
+
+      <li>
+        <h3>Different types of client-side validation</h3>
+
+        <ul>
+          <li>
+            Built-in form validation uses HTML form validation features, which
+            we've discussed in many places throughout this module. This
+            validation generally doesn't require much JavaScript. Built-in form
+            validation has better performance than JavaScript, but it is not as
+            customizable as JavaScript validation.
+          </li>
+          <li>
+            JavaScript validation is coded using JavaScript. This validation is
+            completely customizable, but you need to create it all (or use a
+            library).
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <h3>Using built-in form validation</h3>
+
+        <ul>
+          <li>
+            required: Specifies whether a form field needs to be filled in
+            before the form can be submitted.
+          </li>
+          <li>
+            minlength and maxlength: Specifies the minimum and maximum length of
+            textual data (strings).
+          </li>
+          <li>
+            min and max: Specifies the minimum and maximum values of numerical
+            input types.
+          </li>
+          <li>
+            type: Specifies whether the data needs to be a number, an email
+            address, or some other specific preset type.
+          </li>
+          <li>
+            pattern: Specifies a regular expression that defines a pattern the
+            entered data needs to follow.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3>Validating forms using JavaScript</h3>
+        <p>
+          You must use JavaScript if you want to take control over the look and
+          feel of native error messages.
+        </p>
+      </li>
+
+      <li>
+        <h3>The Constraint Validation API</h3>
+        <p>
+          Most browsers support the Constraint Validation API, which consists of
+          a set of methods and properties available on the following form
+          element DOM interfaces:
+        </p>
+
+        <ul>
+          <li>HTMLButtonElement (represents a button element)</li>
+          <li>HTMLFieldSetElement (represents a fieldset element)</li>
+          <li>HTMLInputElement (represents an input element)</li>
+          <li>HTMLOutputElement (represents an output element)</li>
+          <li>HTMLSelectElement (represents a select element)</li>
+          <li>HTMLTextAreaElement (represents a textarea element)</li>
+        </ul>
+      </li>
+
+      <li>
+        <h3>Validating forms without a built-in API</h3>
+        <p>
+          In some cases, such as custom controls, you won't be able to or won't
+          want to use the Constraint Validation API. You're still able to use
+          JavaScript to validate your form, but you'll just have to write your
+          own.
+        </p>
+      </li>
+    </ul>
+
+    <h2>Using the Fetch API</h2>
+    <p>
+      The Fetch API provides a JavaScript interface for accessing and
+      manipulating parts of the protocol, such as requests and responses. It
+      also provides a global fetch() method that provides an easy, logical way
+      to fetch resources asynchronously across the network. The fetch
+      specification differs from jQuery.ajax() in the following significant
+      ways:
+    </p>
+
+    <ul>
+      <li>
+        The Promise returned from fetch() won't reject on HTTP error status even
+        if the response is an HTTP 404 or 500. Instead, as soon as the server
+        responds with headers, the Promise will resolve normally (with the ok
+        property of the response set to false if the response isn't in the range
+        200–299), and it will only reject on network failure or if anything
+        prevented the request from completing.
+      </li>
+      <li>
+        Unless fetch() is called with the credentials option set to include,
+        fetch():
+        <ul>
+          <li>won't send cookies in cross-origin requests</li>
+          <li>won't set any cookies sent back in cross-origin responses</li>
+          <li>
+            As of August 2018, the default credentials policy changed to
+            same-origin. Firefox was also modified in version 61.0b13)
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul>
+      <li>
+        <h3>Supplying request options</h3>
+        <p>
+          The fetch() method can optionally accept a second parameter, an init
+          object that allows you to control a number of different settings.
+        </p>
+      </li>
+      <li>
+        <h3>Sending a request with credentials included</h3>
+        <p>
+          To cause browsers to send a request with credentials included on both
+          same-origin and cross-origin calls, add credentials: 'include' to the
+          init object you pass to the fetch() method.
+        </p>
+      </li>
+      <li>
+        <h3>Uploading JSON data</h3>
+        <p>Use fetch() to POST JSON-encoded data.</p>
+      </li>
+      <li>
+        <h3>Uploading a file</h3>
+        <p>
+          Files can be uploaded using an HTML input type="file" input element,
+          FormData() and fetch().
+        </p>
+      </li>
+      <li>
+        <h3>Processing a text file line by line</h3>
+        <p>
+          The chunks that are read from a response are not broken neatly at line
+          boundaries and are Uint8Arrays, not strings. If you want to fetch a
+          text file and process it line by line, it is up to you to handle these
+          complications.
+        </p>
+      </li>
+
+      <li>
+        <h3>Checking that the fetch was successful</h3>
+        <p>
+          A fetch() promise will reject with a TypeError when a network error is
+          encountered or CORS is misconfigured on the server-side, although this
+          usually means permission issues or similar — a 404 does not constitute
+          a network error, for example. An accurate check for a successful
+          fetch() would include checking that the promise resolved, then
+          checking that the Response.ok property has a value of true.
+        </p>
+      </li>
+
+      <li>
+        <h3>Response objects</h3>
+
+        <p>
+          As you have seen above, Response instances are returned when fetch()
+          promises are resolved. The most common response properties you'll use
+          are:
+        </p>
+        <ul>
+          <li>
+            Response.status — An integer (default value 200) containing the
+            response status code.
+          </li>
+          <li>
+            Response.statusText — A string (default value ""), which corresponds
+            to the HTTP status code message. Note that HTTP/2 does not support
+            status messages.
+          </li>
+          <li>
+            Response.ok — seen in use above, this is a shorthand for checking
+            that status is in the range 200-299 inclusive. This returns a
+            boolean value.
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <a href="index.html">Go back to Week 10 Page</a>
+    <footer></footer>
+  </body>
+</html>

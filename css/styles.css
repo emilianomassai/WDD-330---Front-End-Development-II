@@ -63,6 +63,11 @@ p, li, #numberOutput, #input, #resultNumber{
     padding: 11px;
   }
 
+  .justLink {
+    all: unset;
+    cursor: pointer;
+  }
+
   a:hover {
     color: #0076b6;
     background-color: white;
