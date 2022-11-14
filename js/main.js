@@ -36,6 +36,10 @@ var weekItems = [
     {
         label: "Week 10",
         url: "weeks/week10/index.html"
+    },
+    {
+        label: "Weather App",
+        url: "weeks/weatherApp/index.html"
     }
 ]
 

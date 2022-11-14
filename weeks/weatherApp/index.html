@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/WDD-330---Front-End-Development-II/js/fetchContent.js"></script>
+    <link
+      rel="stylesheet"
+      href="/WDD-330---Front-End-Development-II/weeks/weatherApp/style.css"
+    />
+
+    <title>Weather App</title>
+  </head>
+  <body>
+    <header></header>
+
+    <h1>Weather Web App</h1>
+    <img
+      src="/WDD-330---Front-End-Development-II/weeks/weatherApp/images/appIcon.png"
+      alt="weather app icon"
+      id="appIcon"
+    />
+    <br />
+    <br />
+    <form
+      id="cityForm"
+      action="/WDD-330---Front-End-Development-II/weeks/weatherApp/views/currentCity.html"
+    >
+      <input
+        type="text"
+        id="cityId"
+        name="city"
+        placeholder="Enter your City"
+        required
+      />
+      <br />
+      <input type="submit" class="btn" value="Search" />
+    </form>
+    <br />
+
+    <a href="/WDD-330---Front-End-Development-II/index.html">Go back Home</a>
+
+    <footer></footer>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/WDD-330---Front-End-Development-II/js/fetchContent.js"></script>
+    <link
+      rel="stylesheet"
+      href="/WDD-330---Front-End-Development-II/weeks/weatherApp/style.css"
+    />
+
+    <title>Weather App</title>
+  </head>
+  <body>
+    <header></header>
+
+    <p>Your City:</p>
+    <div id="City"></div>
+    <script>
+      let input = window.location.search;
+      let fields = input.split("=");
+      let cityName = fields[1];
+      document.getElementById("City").innerHTML = cityName;
+    </script>
+
+    <a href="/WDD-330---Front-End-Development-II/weeks/weatherApp/index.html"
+      >Go back Home</a
+    >
+
+    <footer></footer>
+  </body>
+</html>
