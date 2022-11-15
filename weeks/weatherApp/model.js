@@ -21,8 +21,11 @@ async function getCoordinates() {
     var coordinatesLink = localStorage.getItem("CoordinatesLink")
     const response = await fetch(coordinatesLink);
     const data = await response.json();
-    console.log(data);
-    localStorage.setItem("lat", data.lat);
-    localStorage.setItem("json", data);
+    // console.log(data);
+    // localStorage.setItem("lat", data.lat);
+    // localStorage.setItem("json", data);
+
+    localStorage.setItem("latitude", data[0].lat);
+    localStorage.setItem("longitude", data[0].lon);
 }
 
