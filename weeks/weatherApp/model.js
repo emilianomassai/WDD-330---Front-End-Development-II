@@ -34,7 +34,7 @@ async function getWeather() {
     var longitude = localStorage.getItem("longitude")
 
 
-    var weatherLink = "https://api.openweathermap.org/data/3.0/onecall?lat=" + latitude + "&lon=" + longitude + "&appid=" + apyKey;
+    var weatherLink = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + apyKey;
     const response = await fetch(weatherLink);
     const data = await response.json();
     localStorage.setItem("json", data);
