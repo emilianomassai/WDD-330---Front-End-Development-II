@@ -16,7 +16,24 @@
     transition: 0.3s; /* Add transition on hover */
 }
 
-h1{
+.details {
+    margin: auto;
+    width: 10%;
+    padding: 10px;
+
+}
+
+#wrap{
+    display: flex;
+    align-items: flex-start;
+
+}
+
+#apiData{
+    text-align: center;
+}
+
+h1, h2, p{
     text-align: center;
 
 }
@@ -33,7 +50,7 @@ input {
 }
 
 #appIcon {
-    width: 50%;
+    width: 40%;
     height: auto;
     display: block;
     margin-left: auto;
@@ -41,8 +58,7 @@ input {
     transition: transform 1s ease-in-out;
 }
 
-#appIcon:hover {
-    transform: rotate(360deg);
-
+#appIcon:active {
+    transform: rotate(360deg)
 
 }
