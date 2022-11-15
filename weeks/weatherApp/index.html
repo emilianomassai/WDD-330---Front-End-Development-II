@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <script src="/WDD-330---Front-End-Development-II/js/fetchContent.js"></script>
+    <script src="/WDD-330---Front-End-Development-II/weeks/weatherApp/model.js"></script>
     <link
       rel="icon"
       type="image/x-icon"
@@ -30,6 +31,7 @@
     <form
       id="cityForm"
       action="/WDD-330---Front-End-Development-II/weeks/weatherApp/views/currentCity.html"
+      onsubmit="saveInfo()"
     >
       <input
         type="text"
@@ -38,11 +40,25 @@
         placeholder="Enter your City"
         required
       />
+
+      <input
+        type="text"
+        id="stateId"
+        name="state"
+        placeholder="Enter your State (only for the US)"
+        required
+      />
+      <input
+        type="text"
+        id="countryId"
+        name="country"
+        placeholder="Enter your Country"
+        required
+      />
       <br />
       <input type="submit" class="btn" value="Search" />
     </form>
     <br />
-
     <a href="/WDD-330---Front-End-Development-II/index.html">Go back Home</a>
 
     <footer></footer>

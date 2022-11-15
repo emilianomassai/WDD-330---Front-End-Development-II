@@ -15,10 +15,12 @@
     <p>Your City:</p>
     <div id="City"></div>
     <script>
-      let input = window.location.search;
-      let fields = input.split("=");
-      let cityName = fields[1];
-      document.getElementById("City").innerHTML = cityName;
+      document.getElementById("City").innerHTML =
+        localStorage.getItem("CityName") +
+        " " +
+        localStorage.getItem("StateName") +
+        " " +
+        localStorage.getItem("CountryName");
     </script>
 
     <h1>Your City</h1>
