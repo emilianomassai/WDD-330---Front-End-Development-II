@@ -66,9 +66,9 @@ async function getWeather(latitude, longitude) {
         localStorage.setItem("description", data.weather[0].description);
 
         // temperature in C
-        localStorage.setItem("temperature", data.main.temp + " °C");
+        localStorage.setItem("temperature", data.main.temp + "°C");
         // humidity %
-        localStorage.setItem("humidity", data.main.humidity + " %");
+        localStorage.setItem("humidity", data.main.humidity + "%");
 
         //pressure hPa
         localStorage.setItem("pressure", data.main.pressure + " hPa");
