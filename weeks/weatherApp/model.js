@@ -51,9 +51,35 @@ async function getWeather(latitude, longitude) {
     console.log("longitude localstorage: " + longitude)
 
     if (latitude && longitude) {
-        var weatherLink = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + apyKey;
+        var weatherLink = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + apyKey;
+        localStorage.setItem("weatherLink", weatherLink);
+
         const response = await fetch(weatherLink);
         const data = await response.json();
-        localStorage.setItem("weatherLink", weatherLink);
+
+
+        //condition working
+        localStorage.setItem("condition", data.weather[0].main);
+        //icon working
+        localStorage.setItem("icon", data.weather[0].icon);
+        //description working
+        localStorage.setItem("description", data.weather[0].description);
+
+        // temperature in C
+        localStorage.setItem("temperature", data.main.temp);
+        // humidity %
+        localStorage.setItem("humidity", data.main.humidity);
+
+        //pressure hPa
+        localStorage.setItem("pressure", data.main.pressure);
+
+
+
+        // I can display the results as string
+        // localStorage.setItem("weatherValue", JSON.stringify(data));
+
+
+
+
     }
 }
