@@ -12,8 +12,6 @@
   </head>
   <body>
     <header></header>
-
-    <p>Your City:</p>
     <div id="City"></div>
     <script>
       document.getElementById("City").innerHTML =
@@ -22,7 +20,7 @@
         localStorage.getItem("StateName") +
         " " +
         localStorage.getItem("CountryName");
-      getCoordinates();
+      // getCoordinates();
       // getWeather();
     </script>
 
