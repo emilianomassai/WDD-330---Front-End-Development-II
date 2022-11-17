@@ -12,20 +12,13 @@
   </head>
   <body>
     <header></header>
-    <div id="City"></div>
+    <div></div>
+
+    <h1 id="City"></h1>
     <script>
       document.getElementById("City").innerHTML =
-        localStorage.getItem("CityName") +
-        " " +
-        localStorage.getItem("StateName") +
-        " " +
-        localStorage.getItem("CountryName");
-      // getCoordinates();
-      // getWeather();
+        localStorage.getItem("CityName");
     </script>
-
-    <h1>Your City</h1>
-
     <h2>Current Weather:</h2>
 
     <div id="apiData">
