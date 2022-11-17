@@ -1,4 +1,15 @@
 
+// function used to slow the loading time to get the 
+// response from the API before open the new page
+function formSubmit(form) {
+    saveInfo();
+    setTimeout(function () {
+        form.submit();
+    }, 500); // 0.5 seconds
+    return false;
+}
+
+
 var latitude = "";
 var longitude = "";
 
@@ -20,7 +31,6 @@ function saveInfo() {
     localStorage.setItem("CoordinatesLink", link)
     getCoordinates()
     getWeather()
-
 }
 
 
@@ -41,7 +51,7 @@ getCoordinates()
 
 
 // not working yet
-async function getWeather(latitude, longitude) {
+async function getWeather() {
 
     const apyKey = "bedecaf711a6770c6a01a7e84725bfaf"
     // var latitude = localStorage.getItem("latitude")
@@ -66,14 +76,14 @@ async function getWeather(latitude, longitude) {
         localStorage.setItem("description", data.weather[0].description);
 
         // temperature in C
-        localStorage.setItem("temperature", data.main.temp + "°C");
+        localStorage.setItem("temperature", Math.round(data.main.temp) + "°C");
         // feels like in C
-        localStorage.setItem("feels_like", data.main.feels_like + "°C");
+        localStorage.setItem("feels_like", Math.round(data.main.feels_like) + "°C");
 
         // min temperature in C
-        localStorage.setItem("temp_min", data.main.temp_min + "°C");
+        localStorage.setItem("temp_min", Math.round(data.main.temp_min) + "°C");
         // max temperature in C
-        localStorage.setItem("temp_max", data.main.temp_max + "°C");
+        localStorage.setItem("temp_max", Math.round(data.main.temp_max) + "°C");
 
         // humidity %
         localStorage.setItem("humidity", data.main.humidity + "%");
@@ -89,17 +99,9 @@ async function getWeather(latitude, longitude) {
 
         //Cloudiness %
         localStorage.setItem("cloudiness", data.clouds.all + " %");
-
-
-
-
-
-
-        // I can display the results as string
-        // localStorage.setItem("weatherValue", JSON.stringify(data));
-
-
-
-
     }
+
 }
+
+
+

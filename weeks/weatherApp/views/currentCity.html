@@ -19,7 +19,12 @@
       document.getElementById("City").innerHTML =
         localStorage.getItem("CityName");
     </script>
-    <h2>Current Weather:</h2>
+
+    <h2 id="temperature"></h2>
+    <script>
+      document.getElementById("temperature").innerHTML =
+        localStorage.getItem("temperature");
+    </script>
 
     <div id="apiData">
       <p>this is the space for display data from API</p>
