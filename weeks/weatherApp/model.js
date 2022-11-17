@@ -67,11 +67,31 @@ async function getWeather(latitude, longitude) {
 
         // temperature in C
         localStorage.setItem("temperature", data.main.temp + "°C");
+        // feels like in C
+        localStorage.setItem("feels_like", data.main.feels_like + "°C");
+
+        // min temperature in C
+        localStorage.setItem("temp_min", data.main.temp_min + "°C");
+        // max temperature in C
+        localStorage.setItem("temp_max", data.main.temp_max + "°C");
+
         // humidity %
         localStorage.setItem("humidity", data.main.humidity + "%");
 
         //pressure hPa
         localStorage.setItem("pressure", data.main.pressure + " hPa");
+
+        //visibility in Km
+        localStorage.setItem("visibility", (data.visibility * 0.001) + " Km");
+
+        //wind speed meter/sec
+        localStorage.setItem("wind_speed", data.wind.speed + " meter/sec");
+
+        //Cloudiness %
+        localStorage.setItem("cloudiness", data.clouds.all + " %");
+
+
+
 
 
 
