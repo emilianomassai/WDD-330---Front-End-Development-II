@@ -70,8 +70,13 @@ async function getWeather() {
 
         //condition working
         localStorage.setItem("condition", data.weather[0].main);
-        //icon working
-        localStorage.setItem("icon", data.weather[0].icon);
+
+        //getting full link of the icon working
+        var rootUrl = "http://openweathermap.org/img/wn/";
+        var iconValue = data.weather[0].icon;
+        var iconLink = rootUrl + iconValue + "@2x.png";
+        localStorage.setItem("icon", iconLink);
+
         //description working
         localStorage.setItem("description", data.weather[0].description);
 
