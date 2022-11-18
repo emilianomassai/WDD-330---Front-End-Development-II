@@ -1,3 +1,7 @@
+body{
+    background-color: #85cef5;;
+}
+
 .btn{
     display: block;
     margin-left: auto;
@@ -33,7 +37,7 @@
     text-align: center;
 }
 
-h1, h2, p{
+h1, h2, h3, p{
     text-align: center;
 
 }
