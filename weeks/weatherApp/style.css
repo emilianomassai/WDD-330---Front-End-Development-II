@@ -18,8 +18,8 @@
 
 .details {
     margin: auto;
-    width: 10%;
-    padding: 10px;
+    width: 15%;
+    padding: 5px;
 
 }
 
@@ -62,4 +62,12 @@ input {
 #appIcon:active {
     transform: rotate(360deg)
 
+}
+
+#iconView{
+    transition: transform 1s ease-in-out;
+}
+
+#iconView:hover {
+    transform: scale(1.2)
 }
