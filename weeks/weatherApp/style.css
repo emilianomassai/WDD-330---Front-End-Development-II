@@ -1,6 +1,23 @@
 body{
     background-color: #85cef5;;
 }
+table {
+
+    width: 100%;
+    align-items: center; 
+    justify-content: center; 
+
+  }
+  
+  td {
+    border: 1px solid #525252;
+    padding: 5px;
+    width: 50%;
+
+  }
+  
+
+
 
 .btn{
     display: block;

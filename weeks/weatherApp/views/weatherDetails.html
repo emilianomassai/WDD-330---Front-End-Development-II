@@ -19,10 +19,100 @@
     </script>
 
     <h2>More Details</h2>
+    <table>
+      <tr>
+        <td>
+          <p>Actual temperature</p>
+        </td>
+        <td>
+          <p id="temperature"></p>
+        </td>
+      </tr>
+      <script>
+        document.getElementById("temperature").innerHTML =
+          localStorage.getItem("temperature");
+      </script>
 
-    <div id="apiData">
-      <p>this is the space for display details of the weather from API</p>
-    </div>
+      <tr>
+        <td>
+          <p>Feels like</p>
+        </td>
+        <td>
+          <p id="feels_like"></p>
+          <script>
+            document.getElementById("feels_like").innerHTML =
+              localStorage.getItem("feels_like");
+          </script>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Description</p>
+        </td>
+        <td>
+          <p id="description"></p>
+          <script>
+            document.getElementById("description").innerHTML =
+              localStorage.getItem("description");
+          </script>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Cloudiness</p>
+        </td>
+        <td>
+          <p id="cloudiness"></p>
+          <script>
+            document.getElementById("cloudiness").innerHTML =
+              localStorage.getItem("cloudiness");
+          </script>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Wind speed</p>
+        </td>
+        <td>
+          <p id="wind_speed"></p>
+          <script>
+            document.getElementById("wind_speed").innerHTML =
+              localStorage.getItem("wind_speed");
+          </script>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Humidity</p>
+        </td>
+        <td>
+          <p id="humidity"></p>
+          <script>
+            document.getElementById("humidity").innerHTML =
+              localStorage.getItem("humidity");
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Pressure</p>
+        </td>
+        <td>
+          <p id="pressure"></p>
+          <script>
+            document.getElementById("pressure").innerHTML =
+              localStorage.getItem("pressure");
+          </script>
+        </td>
+      </tr>
+    </table>
+
+    <br />
+    <br />
     <div id="wrap">
       <button
         class="details"
