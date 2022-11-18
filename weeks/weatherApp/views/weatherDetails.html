@@ -61,6 +61,32 @@
 
       <tr>
         <td>
+          <p>Lowest temperature</p>
+        </td>
+        <td>
+          <p id="temp_min"></p>
+          <script>
+            document.getElementById("temp_min").innerHTML =
+              localStorage.getItem("temp_min");
+          </script>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Highest temperature</p>
+        </td>
+        <td>
+          <p id="temp_max"></p>
+          <script>
+            document.getElementById("temp_max").innerHTML =
+              localStorage.getItem("temp_max");
+          </script>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
           <p>Cloudiness</p>
         </td>
         <td>

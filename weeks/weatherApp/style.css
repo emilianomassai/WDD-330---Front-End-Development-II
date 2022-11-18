@@ -87,6 +87,7 @@ input {
 
 #iconView{
     transition: transform 1s ease-in-out;
+    
 }
 
 #iconView:hover {
