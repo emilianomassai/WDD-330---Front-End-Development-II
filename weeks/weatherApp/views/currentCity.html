@@ -27,7 +27,12 @@
     </script>
 
     <div id="apiData">
-      <p>this is the space for display data from API</p>
+      <img id="iconView" />
+      <script>
+        var iconLink = localStorage.getItem("icon");
+        var iconEl = document.getElementById("iconView");
+        iconEl.src = iconLink;
+      </script>
     </div>
     <div id="wrap">
       <button

@@ -74,7 +74,7 @@ async function getWeather() {
         //getting full link of the icon working
         var rootUrl = "http://openweathermap.org/img/wn/";
         var iconValue = data.weather[0].icon;
-        var iconLink = rootUrl + iconValue + "@2x.png";
+        var iconLink = rootUrl + iconValue + "@4x.png";
         localStorage.setItem("icon", iconLink);
 
         //description working
