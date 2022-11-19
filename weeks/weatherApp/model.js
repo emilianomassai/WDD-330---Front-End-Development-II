@@ -20,7 +20,7 @@ function saveInfo() {
     var countryId = document.getElementById("countryId").value;
     var stateId = document.getElementById("stateId").value;
     const apyKey = "bedecaf711a6770c6a01a7e84725bfaf"
-    var link = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityId + "," + stateId + "," + countryId + "&appid=" + apyKey;
+    var link = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityId + "," + stateId + "," + countryId + "&appid=" + apyKey;
 
     if (localStorage) {
         localStorage.clear()
@@ -72,7 +72,7 @@ async function getWeather() {
         localStorage.setItem("condition", data.weather[0].main);
 
         //getting full link of the icon working
-        var rootUrl = "http://openweathermap.org/img/wn/";
+        var rootUrl = "https://openweathermap.org/img/wn/";
         var iconValue = data.weather[0].icon;
         var iconLink = rootUrl + iconValue + "@4x.png";
         localStorage.setItem("icon", iconLink);
