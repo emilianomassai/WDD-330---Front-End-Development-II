@@ -9,6 +9,10 @@ function formSubmit(form) {
     return false;
 }
 
+function clearLocalStorage() {
+    window.localStorage.clear();
+}
+
 
 var latitude = "";
 var longitude = "";
@@ -60,50 +64,60 @@ async function getWeather() {
     console.log("latitude localstorage: " + latitude)
     console.log("longitude localstorage: " + longitude)
 
-    if (latitude && longitude) {
+    if (localStorage.length > 0) {
         var weatherLink = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + apyKey;
         localStorage.setItem("weatherLink", weatherLink);
 
         const response = await fetch(weatherLink);
-        const data = await response.json();
+
+        if (response.ok) {
+            const data = await response.json();
+
+            //taking the city name from the API
+            localStorage.setItem("CityName", data.name);
 
 
-        //condition working
-        localStorage.setItem("condition", data.weather[0].main);
 
-        //getting full link of the icon working
-        var rootUrl = "https://openweathermap.org/img/wn/";
-        var iconValue = data.weather[0].icon;
-        var iconLink = rootUrl + iconValue + "@4x.png";
-        localStorage.setItem("icon", iconLink);
+            //condition working
+            localStorage.setItem("condition", data.weather[0].main);
 
-        //description working
-        localStorage.setItem("description", data.weather[0].description);
+            //getting full link of the icon working
+            var rootUrl = "https://openweathermap.org/img/wn/";
+            var iconValue = data.weather[0].icon;
+            var iconLink = rootUrl + iconValue + "@4x.png";
+            localStorage.setItem("icon", iconLink);
 
-        // temperature in C
-        localStorage.setItem("temperature", Math.round(data.main.temp) + "°C");
-        // feels like in C
-        localStorage.setItem("feels_like", Math.round(data.main.feels_like) + "°C");
+            //description working with first letter capitalized 
+            const apiDescription = data.weather[0].description
+            const outputDescription = apiDescription.charAt(0).toUpperCase() + apiDescription.slice(1)
+            localStorage.setItem("description", outputDescription);
 
-        // min temperature in C
-        localStorage.setItem("temp_min", Math.round(data.main.temp_min) + "°C");
-        // max temperature in C
-        localStorage.setItem("temp_max", Math.round(data.main.temp_max) + "°C");
+            // temperature in C
+            localStorage.setItem("temperature", Math.round(data.main.temp) + "°C");
+            // feels like in C
+            localStorage.setItem("feels_like", Math.round(data.main.feels_like) + "°C");
 
-        // humidity %
-        localStorage.setItem("humidity", data.main.humidity + "%");
+            // min temperature in C
+            localStorage.setItem("temp_min", Math.round(data.main.temp_min) + "°C");
+            // max temperature in C
+            localStorage.setItem("temp_max", Math.round(data.main.temp_max) + "°C");
 
-        //pressure hPa
-        localStorage.setItem("pressure", data.main.pressure + " hPa");
+            // humidity %
+            localStorage.setItem("humidity", data.main.humidity + "%");
 
-        //visibility in Km
-        localStorage.setItem("visibility", (data.visibility * 0.001) + " Km");
+            //pressure hPa
+            localStorage.setItem("pressure", data.main.pressure + " hPa");
 
-        //wind speed meter/sec
-        localStorage.setItem("wind_speed", data.wind.speed + " meter/sec");
+            //visibility in Km
+            localStorage.setItem("visibility", (data.visibility * 0.001) + " Km");
 
-        //Cloudiness %
-        localStorage.setItem("cloudiness", data.clouds.all + " %");
+            //wind speed meter/sec
+            localStorage.setItem("wind_speed", data.wind.speed + " meter/sec");
+
+            //Cloudiness %
+            localStorage.setItem("cloudiness", data.clouds.all + " %");
+        } else
+            document.location.href = "/WDD-330---Front-End-Development-II/weeks/weatherApp/index.html";
     }
 
 }
