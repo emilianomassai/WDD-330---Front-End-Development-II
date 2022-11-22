@@ -14,9 +14,6 @@ function clearLocalStorage() {
 }
 
 
-var latitude = "";
-var longitude = "";
-
 // take the user input and store it in the local storage
 function saveInfo() {
 
@@ -35,7 +32,7 @@ function saveInfo() {
     localStorage.setItem("CoordinatesLink", link)
     getCoordinates()
     getWeather()
-    // getForecast()
+    getForecast()
 }
 
 
@@ -48,9 +45,8 @@ async function getCoordinates() {
     const data = await response.json();
     localStorage.setItem("latitude", data[0].lat);
     localStorage.setItem("longitude", data[0].lon);
-    latitude = localStorage.getItem("latitude")
-    longitude = localStorage.getItem("longitude")
-    getWeather(latitude, longitude)
+
+    getWeather()
 }
 getCoordinates()
 
@@ -58,8 +54,8 @@ getCoordinates()
 async function getWeather() {
 
     const apyKey = "bedecaf711a6770c6a01a7e84725bfaf"
-    // var latitude = localStorage.getItem("latitude")
-    // var longitude = localStorage.getItem("longitude")
+    var latitude = localStorage.getItem("latitude")
+    var longitude = localStorage.getItem("longitude")
 
     console.log("latitude localstorage: " + latitude)
     console.log("longitude localstorage: " + longitude)
@@ -118,11 +114,11 @@ async function getWeather() {
 
         //sunrise
         var UnixSunrise = data.sys.sunrise
-        localStorage.setItem("sunrise", format_time(UnixSunrise));
+        localStorage.setItem("sunrise", format_time(UnixSunrise) + " UTC");
 
         //sunset
         var UnixSunset = data.sys.sunset
-        localStorage.setItem("sunset", format_time(UnixSunset));
+        localStorage.setItem("sunset", format_time(UnixSunset) + " UTC");
 
     }
 
@@ -131,26 +127,32 @@ async function getWeather() {
 
 //function to calculate the human form of the time from the UNIX time format
 function format_time(s) {
-    return new Date(s * 1e3).toISOString().slice(-13, -5);
+    return new Date(s * 1e3).toISOString().slice(-13, -8);
 }
 
 
 
 // not working yet
-// async function getForecast() {
+async function getForecast() {
 
-//     const apyKey = "bedecaf711a6770c6a01a7e84725bfaf"
-//     var latitude = localStorage.getItem("latitude")
-//     var longitude = localStorage.getItem("longitude")
+    const apyKey = "bedecaf711a6770c6a01a7e84725bfaf"
+    var latitude = localStorage.getItem("latitude")
+    var longitude = localStorage.getItem("longitude")
 
 
-//     if (latitude && longitude) {
-//         var forecastLink = "api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + apyKey;
+    if (latitude && longitude) {
+        var forecastLink = "api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + apyKey;
 
-//         const response = await fetch(forecastLink);
-//         const data = await response.json();
-//         localStorage.setItem("forecast_temp", data.main.temp);
-//     }
+        localStorage.setItem("forecastLink", forecastLink);
 
-// }
-// getForecast() 
+        const response = await fetch(forecastLink);
+        const data = await response.json();
+        // localStorage.setItem("forecast_temp", data);
+
+
+
+    }
+
+    // localStorage.setItem("forecast_temp", data.list[0].main[0].temp);
+}
+getForecast()
