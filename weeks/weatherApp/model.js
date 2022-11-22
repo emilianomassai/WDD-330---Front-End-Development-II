@@ -35,6 +35,7 @@ function saveInfo() {
     localStorage.setItem("CoordinatesLink", link)
     getCoordinates()
     getWeather()
+    // getForecast()
 }
 
 
@@ -54,7 +55,6 @@ async function getCoordinates() {
 getCoordinates()
 
 
-// not working yet
 async function getWeather() {
 
     const apyKey = "bedecaf711a6770c6a01a7e84725bfaf"
@@ -64,63 +64,93 @@ async function getWeather() {
     console.log("latitude localstorage: " + latitude)
     console.log("longitude localstorage: " + longitude)
 
-    if (localStorage.length > 0) {
+    if (latitude && longitude) {
         var weatherLink = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + apyKey;
         localStorage.setItem("weatherLink", weatherLink);
 
         const response = await fetch(weatherLink);
-
-        if (response.ok) {
-            const data = await response.json();
-
-            //taking the city name from the API
-            localStorage.setItem("CityName", data.name);
+        const data = await response.json();
 
 
+        //taking the city name from the API
+        localStorage.setItem("CityName", data.name);
 
-            //condition working
-            localStorage.setItem("condition", data.weather[0].main);
 
-            //getting full link of the icon working
-            var rootUrl = "https://openweathermap.org/img/wn/";
-            var iconValue = data.weather[0].icon;
-            var iconLink = rootUrl + iconValue + "@4x.png";
-            localStorage.setItem("icon", iconLink);
 
-            //description working with first letter capitalized 
-            const apiDescription = data.weather[0].description
-            const outputDescription = apiDescription.charAt(0).toUpperCase() + apiDescription.slice(1)
-            localStorage.setItem("description", outputDescription);
+        //condition working
+        localStorage.setItem("condition", data.weather[0].main);
 
-            // temperature in C
-            localStorage.setItem("temperature", Math.round(data.main.temp) + "°C");
-            // feels like in C
-            localStorage.setItem("feels_like", Math.round(data.main.feels_like) + "°C");
+        //getting full link of the icon working
+        var rootUrl = "https://openweathermap.org/img/wn/";
+        var iconValue = data.weather[0].icon;
+        var iconLink = rootUrl + iconValue + "@4x.png";
+        localStorage.setItem("icon", iconLink);
 
-            // min temperature in C
-            localStorage.setItem("temp_min", Math.round(data.main.temp_min) + "°C");
-            // max temperature in C
-            localStorage.setItem("temp_max", Math.round(data.main.temp_max) + "°C");
+        //description working with first letter capitalized 
+        const apiDescription = data.weather[0].description
+        const outputDescription = apiDescription.charAt(0).toUpperCase() + apiDescription.slice(1)
+        localStorage.setItem("description", outputDescription);
 
-            // humidity %
-            localStorage.setItem("humidity", data.main.humidity + "%");
+        // temperature in C
+        localStorage.setItem("temperature", Math.round(data.main.temp) + "°C");
+        // feels like in C
+        localStorage.setItem("feels_like", Math.round(data.main.feels_like) + "°C");
 
-            //pressure hPa
-            localStorage.setItem("pressure", data.main.pressure + " hPa");
+        // min temperature in C
+        localStorage.setItem("temp_min", Math.round(data.main.temp_min) + "°C");
+        // max temperature in C
+        localStorage.setItem("temp_max", Math.round(data.main.temp_max) + "°C");
 
-            //visibility in Km
-            localStorage.setItem("visibility", (data.visibility * 0.001) + " Km");
+        // humidity %
+        localStorage.setItem("humidity", data.main.humidity + "%");
 
-            //wind speed meter/sec
-            localStorage.setItem("wind_speed", data.wind.speed + " meter/sec");
+        //pressure hPa
+        localStorage.setItem("pressure", data.main.pressure + " hPa");
 
-            //Cloudiness %
-            localStorage.setItem("cloudiness", data.clouds.all + " %");
-        } else
-            document.location.href = "/WDD-330---Front-End-Development-II/weeks/weatherApp/index.html";
+        //visibility in Km
+        localStorage.setItem("visibility", (data.visibility * 0.001) + " Km");
+
+        //wind speed meter/sec
+        localStorage.setItem("wind_speed", data.wind.speed + " meter/sec");
+
+        //Cloudiness %
+        localStorage.setItem("cloudiness", data.clouds.all + " %");
+
+        //sunrise
+        var UnixSunrise = data.sys.sunrise
+        localStorage.setItem("sunrise", format_time(UnixSunrise));
+
+        //sunset
+        var UnixSunset = data.sys.sunset
+        localStorage.setItem("sunset", format_time(UnixSunset));
+
     }
 
 }
 
 
+//function to calculate the human form of the time from the UNIX time format
+function format_time(s) {
+    return new Date(s * 1e3).toISOString().slice(-13, -5);
+}
 
+
+
+// not working yet
+// async function getForecast() {
+
+//     const apyKey = "bedecaf711a6770c6a01a7e84725bfaf"
+//     var latitude = localStorage.getItem("latitude")
+//     var longitude = localStorage.getItem("longitude")
+
+
+//     if (latitude && longitude) {
+//         var forecastLink = "api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + apyKey;
+
+//         const response = await fetch(forecastLink);
+//         const data = await response.json();
+//         localStorage.setItem("forecast_temp", data.main.temp);
+//     }
+
+// }
+// getForecast() 

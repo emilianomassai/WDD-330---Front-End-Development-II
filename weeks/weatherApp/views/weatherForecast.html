@@ -12,23 +12,31 @@
   <body>
     <header></header>
 
-    <div id="City"></div>
+    <h1 id="City"></h1>
     <script>
       document.getElementById("City").innerHTML =
-        localStorage.getItem("CityName") +
-        " " +
-        localStorage.getItem("StateName") +
-        " " +
-        localStorage.getItem("CountryName");
+        localStorage.getItem("CityName");
     </script>
 
-    <h1>Forecast</h1>
+    <h2>Forecast</h2>
 
-    <h2>Weather 5 Days Forecast</h2>
+    <h3>Weather 5 Days Forecast</h3>
 
-    <div id="apiData">
-      <p>this is the space for display details of the weather from API</p>
-    </div>
+    <!-- <table>
+      <tr>
+        <td>
+          <p>Forecast temperature</p>
+        </td>
+        <td>
+          <p id="forecast_temp"></p>
+        </td>
+      </tr>
+      <script>
+        document.getElementById("forecast_temp").innerHTML =
+          localStorage.getItem("forecast_temp");
+      </script>
+    </table> -->
+
     <div id="wrap">
       <button
         class="details"
