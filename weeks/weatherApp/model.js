@@ -121,7 +121,8 @@ function format_time(s) {
 
 
 
-// not working yet
+// got all the info. I need to use it inside an object or map to display
+// all the results.
 async function getForecast() {
 
     const apyKey = "bedecaf711a6770c6a01a7e84725bfaf"
@@ -147,8 +148,8 @@ async function getForecast() {
                 feels_like: Math.round(obj.main.feels_like) + "°C",
                 clouds: obj.clouds.all + "%",
                 humidity: obj.main.humidity + "%",
-                main: obj.main,
-                weather: obj.weather
+                weather: obj.weather,
+                main: obj.main
             }
         });
         console.log(forecast);
