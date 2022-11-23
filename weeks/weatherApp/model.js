@@ -151,10 +151,10 @@ async function getForecast() {
                 weather: obj.weather
             }
         });
-
         console.log(forecast);
 
     }
+
 
 
 }
