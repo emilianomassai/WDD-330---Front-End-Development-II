@@ -30,9 +30,12 @@ function saveInfo() {
     localStorage.setItem("CountryName", countryId);
     localStorage.setItem("StateName", stateId);
     localStorage.setItem("CoordinatesLink", link)
-    getCoordinates()
-    getWeather()
-    getForecast()
+
+    if (link) {
+        getCoordinates()
+    }
+    // getWeather()
+    // getForecast()
 }
 
 
@@ -41,12 +44,14 @@ async function getCoordinates() {
 
 
     var coordinatesLink = localStorage.getItem("CoordinatesLink")
-    const response = await fetch(coordinatesLink);
-    const data = await response.json();
-    localStorage.setItem("latitude", data[0].lat);
-    localStorage.setItem("longitude", data[0].lon);
+    if (coordinatesLink) {
+        const response = await fetch(coordinatesLink);
+        const data = await response.json();
+        localStorage.setItem("latitude", data[0].lat);
+        localStorage.setItem("longitude", data[0].lon);
 
-    getWeather()
+        getWeather()
+    }
 }
 getCoordinates()
 
@@ -66,56 +71,40 @@ async function getWeather() {
 
         const response = await fetch(weatherLink);
         const data = await response.json();
-
-
         //taking the city name from the API
         localStorage.setItem("CityName", data.name);
-
-
-
         //condition working
         localStorage.setItem("condition", data.weather[0].main);
-
         //getting full link of the icon working
         var rootUrl = "https://openweathermap.org/img/wn/";
         var iconValue = data.weather[0].icon;
         var iconLink = rootUrl + iconValue + "@4x.png";
         localStorage.setItem("icon", iconLink);
-
         //description working with first letter capitalized 
         const apiDescription = data.weather[0].description
         const outputDescription = apiDescription.charAt(0).toUpperCase() + apiDescription.slice(1)
         localStorage.setItem("description", outputDescription);
-
         // temperature in C
         localStorage.setItem("temperature", Math.round(data.main.temp) + "°C");
         // feels like in C
         localStorage.setItem("feels_like", Math.round(data.main.feels_like) + "°C");
-
         // min temperature in C
         localStorage.setItem("temp_min", Math.round(data.main.temp_min) + "°C");
         // max temperature in C
         localStorage.setItem("temp_max", Math.round(data.main.temp_max) + "°C");
-
         // humidity %
         localStorage.setItem("humidity", data.main.humidity + "%");
-
         //pressure hPa
         localStorage.setItem("pressure", data.main.pressure + " hPa");
-
         //visibility in Km
         localStorage.setItem("visibility", (data.visibility * 0.001) + " Km");
-
         //wind speed meter/sec
         localStorage.setItem("wind_speed", data.wind.speed + " meter/sec");
-
         //Cloudiness %
         localStorage.setItem("cloudiness", data.clouds.all + " %");
-
         //sunrise
         var UnixSunrise = data.sys.sunrise
         localStorage.setItem("sunrise", format_time(UnixSunrise) + " UTC");
-
         //sunset
         var UnixSunset = data.sys.sunset
         localStorage.setItem("sunset", format_time(UnixSunset) + " UTC");
@@ -141,14 +130,15 @@ async function getForecast() {
 
 
     if (latitude && longitude) {
-        var forecastLink = "api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + apyKey;
+        var forecastLink = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + apyKey;
 
         localStorage.setItem("forecastLink", forecastLink);
 
         const response = await fetch(forecastLink);
-        const data = await response.json();
-        // localStorage.setItem("forecast_temp", data);
+        // const data = await response.json();
+        const data = await response.text();
 
+        console.log(data);
 
 
     }
