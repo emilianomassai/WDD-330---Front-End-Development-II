@@ -135,14 +135,27 @@ async function getForecast() {
         localStorage.setItem("forecastLink", forecastLink);
 
         const response = await fetch(forecastLink);
-        // const data = await response.json();
-        const data = await response.text();
-
+        const data = await response.json();
         console.log(data);
+        // localStorage.setItem("forecast_temp", data.list[0].main.temp);
 
+        var forecast = data.list.map(function (obj) {
+            return {
+                temp: Math.round(obj.main.temp) + "°C",
+                icon: obj.weather[0].icon,
+                condition: obj.weather[0].main,
+                feels_like: Math.round(obj.main.feels_like) + "°C",
+                clouds: obj.clouds.all + "%",
+                humidity: obj.main.humidity + "%",
+                main: obj.main,
+                weather: obj.weather
+            }
+        });
+
+        console.log(forecast);
 
     }
 
-    // localStorage.setItem("forecast_temp", data.list[0].main[0].temp);
+
 }
 getForecast()
