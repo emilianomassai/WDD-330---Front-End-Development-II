@@ -6,6 +6,7 @@
       rel="stylesheet"
       href="/WDD-330---Front-End-Development-II/weeks/weatherApp/style.css"
     />
+    <script src="/WDD-330---Front-End-Development-II/weeks/weatherApp/model.js"></script>
 
     <title>Weather App</title>
   </head>
@@ -15,14 +16,20 @@
     <h1 id="City"></h1>
     <script>
       document.getElementById("City").innerHTML =
-        localStorage.getItem("CityName");
+        localStorage.getItem("CityName") +
+        " " +
+        "(" +
+        localStorage.getItem("country") +
+        ")";
     </script>
 
     <h2>Forecast</h2>
 
     <h3>Weather 5 Days Forecast</h3>
 
-    <table>
+    <div id="displayForecast"></div>
+
+    <!-- <table>
       <tr>
         <td>
           <p>Forecast temperature</p>
@@ -35,7 +42,7 @@
         document.getElementById("forecast_temp").innerHTML =
           localStorage.getItem("forecast_temp");
       </script>
-    </table>
+    </table> -->
 
     <div id="wrap">
       <button

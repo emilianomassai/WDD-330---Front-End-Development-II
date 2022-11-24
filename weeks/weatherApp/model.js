@@ -149,9 +149,69 @@ async function getForecast() {
         const data = await response.json();
         console.log(data);
         // localStorage.setItem("forecast_temp", data.list[0].main.temp);
+        const mainUL = document.createElement("ul");
+        // displayForecast
+
+        for (let i = 0; i < data.list.length; i++) {
+            const forecastLI = document.createElement("li");
+
+            var timestamp = data.list[i].dt * 1000;
+            var date = new Date(timestamp);
+            var hour = date.getHours();
+            if (hour < 10) {
+                hour = "0" + hour;
+            }
+            var string = date.toDateString()
+            let dateString = string.substring(string.length - 4, 0);
+            forecastLI.innerHTML = dateString + " at " + hour + ":00";;
+
+
+
+            const forecastDIV = document.createElement("div");
+
+            forecastDIV.innerHTML = `
+                    <ul>
+                      <li>Temp:  ${Math.round(data.list[i].main.temp) + "°C"}</li>
+                      <li>Feels like:  ${Math.round(data.list[i].main.feels_like) + "°C"}</li>
+                      <li>Condition:  ${data.list[i].weather[0].main}</li>
+                      <li>Clouds:  ${data.list[i].clouds.all + "%"}</li>                      
+                      <li>Humidity:  ${data.list[i].main.humidity + "%"}</li>
+                   </ul><br>`;
+
+            forecastDIV.style.display = "none";
+
+            forecastLI.setAttribute("id", "detail" + i);
+            forecastDIV.setAttribute("id", "content" + i);
+
+            // forecastLI.appendChild(forecastA);
+            forecastLI.appendChild(forecastDIV);
+            // append forecast list to mainUL
+            mainUL.appendChild(forecastLI);
+        }
+
+        // append mainUL to the div element
+        document.getElementById("displayForecast").appendChild(mainUL);
+
+
+
+        //DEBUG PURPOSE ONLY:
 
         var forecast = data.list.map(function (obj) {
+
+            var timestamp = obj.dt * 1000;
+
+            var date = new Date(timestamp);
+
+            var year = date.getFullYear();
+            var month = date.getMonth();
+            var day = date.getDay();
+            var hour = date.getHours();
+            var mins = date.getMinutes();
+            var secs = date.getSeconds();
+
+            var dateString = date.toDateString() + " at " + hour + ":00";
             return {
+                time: dateString,
                 temp: Math.round(obj.main.temp) + "°C",
                 icon: obj.weather[0].icon,
                 condition: obj.weather[0].main,
@@ -163,10 +223,37 @@ async function getForecast() {
             }
         });
         console.log(forecast);
-
+        ///finished debug ////////////
     }
 
 
 
 }
 getForecast()
+
+
+// Create event listener
+document.addEventListener("click", (e) => {
+    // Retrieve id from clicked element
+    let elementId = e.target.id;
+    // If element has id
+    if (elementId !== "") {
+        console.log(elementId);
+        var str = elementId;
+        var res = str.slice(-1);
+        var contentId = "content" + res;
+        var x = document.getElementById(contentId);
+
+        if (x) {
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    }
+    // If element has no id
+    else {
+        console.log("An element without an id was clicked.");
+    }
+});
