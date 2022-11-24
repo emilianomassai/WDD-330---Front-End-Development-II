@@ -17,6 +17,8 @@ function clearLocalStorage() {
 // take the user input and store it in the local storage
 function saveInfo() {
 
+    // if city is less then 3 or state less than 3 
+
     var cityId = document.getElementById("cityId").value;
     var countryId = document.getElementById("countryId").value;
     var stateId = document.getElementById("stateId").value;
@@ -47,13 +49,19 @@ async function getCoordinates() {
     if (coordinatesLink) {
         const response = await fetch(coordinatesLink);
         const data = await response.json();
-        localStorage.setItem("latitude", data[0].lat);
-        localStorage.setItem("longitude", data[0].lon);
+        if (data != '') {
+            localStorage.setItem("latitude", data[0].lat);
+            localStorage.setItem("longitude", data[0].lon);
+            localStorage.setItem('good_response.status', response.status)
+            getWeather()
 
-        getWeather()
+        }
+        else
+            location.replace("./index.html")
     }
 }
-getCoordinates()
+
+// getCoordinates()
 
 
 async function getWeather() {
@@ -108,6 +116,8 @@ async function getWeather() {
         //sunset
         var UnixSunset = data.sys.sunset
         localStorage.setItem("sunset", format_time(UnixSunset) + " UTC");
+        //country
+        localStorage.setItem("country", data.sys.country)
 
     }
 

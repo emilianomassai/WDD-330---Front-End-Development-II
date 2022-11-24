@@ -17,7 +17,11 @@
     <h1 id="City"></h1>
     <script>
       document.getElementById("City").innerHTML =
-        localStorage.getItem("CityName");
+        localStorage.getItem("CityName") +
+        " " +
+        "(" +
+        localStorage.getItem("country") +
+        ")";
     </script>
 
     <h2>Current weather:</h2>
