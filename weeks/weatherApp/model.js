@@ -152,8 +152,16 @@ async function getForecast() {
         const mainUL = document.createElement("ul");
         // displayForecast
 
+        /**
+                        TO DO!!!!! 
+        // Here I want to display the weather like this:
+
+        // Mon Nov 28                       9/5 °C icon
+        // if this is clicked, it shows all the details 
+        */
+
         for (let i = 0; i < data.list.length; i++) {
-            const forecastLI = document.createElement("li");
+            // const forecastLI = document.createElement("li");
 
             var timestamp = data.list[i].dt * 1000;
             var date = new Date(timestamp);
@@ -163,14 +171,24 @@ async function getForecast() {
             }
             var string = date.toDateString()
             let dateString = string.substring(string.length - 4, 0);
-            forecastLI.innerHTML = dateString + " at " + hour + ":00";;
+            // forecastLI.innerHTML = dateString + " at " + hour + ":00";
 
 
 
             const forecastDIV = document.createElement("div");
 
+
+            var rootUrl = "https://openweathermap.org/img/wn/";
+            var iconValue = data.list[i].weather[0].icon;
+            var iconLink = rootUrl + iconValue + "@2x.png";
+            console.log("Icon link " + iconLink)
+
+
+            // CORRECT IMAGE LINK BUT NOT DISPLAYING PROPERLY
             forecastDIV.innerHTML = `
                     <ul>
+                    <li><img class='iconForecast' src=${iconLink}> </li>
+                    <li> ${dateString} at ${hour}:00</li>
                       <li>Temp:  ${Math.round(data.list[i].main.temp) + "°C"}</li>
                       <li>Feels like:  ${Math.round(data.list[i].main.feels_like) + "°C"}</li>
                       <li>Condition:  ${data.list[i].weather[0].main}</li>
@@ -178,20 +196,26 @@ async function getForecast() {
                       <li>Humidity:  ${data.list[i].main.humidity + "%"}</li>
                    </ul><br>`;
 
-            forecastDIV.style.display = "none";
+            // forecastDIV.style.display = "none";
 
-            forecastLI.setAttribute("id", "detail" + i);
-            forecastDIV.setAttribute("id", "content" + i);
+            // forecastLI.setAttribute("id", "detail" + i);
+            // forecastDIV.setAttribute("id", "content" + i);
 
-            // forecastLI.appendChild(forecastA);
-            forecastLI.appendChild(forecastDIV);
+            forecastDIV.setAttribute("class", "forecastDetails");
+
+
+
+
+
+            // forecastLI.appendChild(forecastDIV);
             // append forecast list to mainUL
-            mainUL.appendChild(forecastLI);
+            mainUL.appendChild(forecastDIV);
         }
 
-        // append mainUL to the div element
-        document.getElementById("displayForecast").appendChild(mainUL);
-
+        // append mainUL to the div element if existing 
+        if (document.getElementById("displayForecast")) {
+            document.getElementById("displayForecast").appendChild(mainUL);
+        }
 
 
         //DEBUG PURPOSE ONLY:
@@ -232,28 +256,34 @@ async function getForecast() {
 getForecast()
 
 
-// Create event listener
-document.addEventListener("click", (e) => {
-    // Retrieve id from clicked element
-    let elementId = e.target.id;
-    // If element has id
-    if (elementId !== "") {
-        console.log(elementId);
-        var str = elementId;
-        var res = str.slice(-1);
-        var contentId = "content" + res;
-        var x = document.getElementById(contentId);
+// // Create event listener
+// document.addEventListener("click", (e) => {
+//     // Retrieve id from clicked element
+//     let elementId = e.target.id;
+//     console.log("elementId clicked " + elementId);
 
-        if (x) {
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    }
-    // If element has no id
-    else {
-        console.log("An element without an id was clicked.");
-    }
-});
+//     // If element has id
+//     if (elementId !== "") {
+//         console.log(elementId);
+//         var str = elementId;
+//         console.log("str " + str);
+
+//         var res = str.slice(-1);
+//         console.log("sliced " + str);
+
+//         var contentId = "content" + res;
+//         var x = document.getElementById(contentId);
+
+//         if (x) {
+//             if (x.style.display === "none") {
+//                 x.style.display = "block";
+//             } else {
+//                 x.style.display = "none";
+//             }
+//         }
+//     }
+//     // If element has no id
+//     else {
+//         console.log("An element without an id was clicked.");
+//     }
+// });

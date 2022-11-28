@@ -60,6 +60,38 @@ table {
     text-align: center;
 }
 
+#displayForecast{
+    display: inline-flex;
+    writing-mode: vertical-lr;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 45%;
+}
+
+
+.forecastDetails {
+  writing-mode: horizontal-tb;
+  width: 250px;
+  height: 100px;
+  text-align: center;
+
+}
+
+.iconForecast{
+    width: 50%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+/* .forecastDetails li{
+    flex: 0 0 50%;
+} */
+
 h1, h2, h3, p{
     text-align: center;
 
