@@ -1,4 +1,8 @@
 
+const hours = [];
+const temps = [];
+const feelsLikeArr = [];
+
 // function used to slow the loading time to get the 
 // response from the API before open the new page
 function formSubmit(form) {
@@ -106,10 +110,10 @@ async function getWeather() {
         localStorage.setItem("pressure", data.main.pressure + " hPa");
         //visibility in Km
         localStorage.setItem("visibility", (data.visibility * 0.001) + " Km");
-        //wind speed meter/sec
-        localStorage.setItem("wind_speed", data.wind.speed + " meter/sec");
+        //wind speed km/h
+        localStorage.setItem("wind_speed", ((data.wind.speed) * (60 * 60) / 1000).toFixed(2) + " km/h");
         //Cloudiness %
-        localStorage.setItem("cloudiness", data.clouds.all + " %");
+        localStorage.setItem("cloudiness", data.clouds.all + "%");
         //sunrise
         var UnixSunrise = data.sys.sunrise
         localStorage.setItem("sunrise", format_time(UnixSunrise) + " UTC");
@@ -152,13 +156,7 @@ async function getForecast() {
         const mainUL = document.createElement("ul");
         // displayForecast
 
-        /**
-                        TO DO!!!!! 
-        // Here I want to display the weather like this:
 
-        // Mon Nov 28                       9/5 °C icon
-        // if this is clicked, it shows all the details 
-        */
 
         for (let i = 0; i < data.list.length; i++) {
             // const forecastLI = document.createElement("li");
@@ -169,6 +167,12 @@ async function getForecast() {
             if (hour < 10) {
                 hour = "0" + hour;
             }
+
+            // store data for the graph
+            hours.push(hour + ':00');
+            temps.push(Math.round(data.list[i].main.temp));
+            feelsLikeArr.push(Math.round(data.list[i].main.feels_like));
+
             var string = date.toDateString()
             let dateString = string.substring(string.length - 4, 0);
             // forecastLI.innerHTML = dateString + " at " + hour + ":00";
@@ -194,6 +198,8 @@ async function getForecast() {
                       <li>Condition:  ${data.list[i].weather[0].main}</li>
                       <li>Clouds:  ${data.list[i].clouds.all + "%"}</li>                      
                       <li>Humidity:  ${data.list[i].main.humidity + "%"}</li>
+                      <li>Wind:  ${((data.list[i].wind.speed) * (60 * 60) / 1000).toFixed(2) + "km/h"}</li>
+
                    </ul><br>`;
 
             // forecastDIV.style.display = "none";
@@ -247,6 +253,7 @@ async function getForecast() {
             }
         });
         console.log(forecast);
+        // console.log(temps)
         ///finished debug ////////////
     }
 
@@ -256,34 +263,45 @@ async function getForecast() {
 getForecast()
 
 
-// // Create event listener
-// document.addEventListener("click", (e) => {
-//     // Retrieve id from clicked element
-//     let elementId = e.target.id;
-//     console.log("elementId clicked " + elementId);
+async function setup() {
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: hours,
+            datasets: [
+                {
+                    label: 'Temperature in °C',
+                    data: temps,
+                    fill: false,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Feels Like in °C',
+                    data: feelsLikeArr,
+                    fill: false,
+                    borderColor: 'rgba(75, 12, 148, 1)',
+                    backgroundColor: 'rgba(75, 12, 148, 1)',
+                    borderWidth: 1
+                }
+            ]
 
-//     // If element has id
-//     if (elementId !== "") {
-//         console.log(elementId);
-//         var str = elementId;
-//         console.log("str " + str);
+        },
+        options: {
+            scales: {
+                y: {
+                    ticks: {
+                        callback: function (value, index, ticks) {
+                            return value + '°';
+                        }
+                    }
+                }
 
-//         var res = str.slice(-1);
-//         console.log("sliced " + str);
+            }
+        }
+    });
 
-//         var contentId = "content" + res;
-//         var x = document.getElementById(contentId);
+}
 
-//         if (x) {
-//             if (x.style.display === "none") {
-//                 x.style.display = "block";
-//             } else {
-//                 x.style.display = "none";
-//             }
-//         }
-//     }
-//     // If element has no id
-//     else {
-//         console.log("An element without an id was clicked.");
-//     }
-// });
