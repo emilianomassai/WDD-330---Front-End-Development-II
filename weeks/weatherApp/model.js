@@ -290,18 +290,7 @@ async function setup() {
             ]
 
         },
-        options: {
-            scales: {
-                y: {
-                    ticks: {
-                        callback: function (value, index, ticks) {
-                            return value + '°';
-                        }
-                    }
-                }
-
-            }
-        }
+        options: {}
     });
 
 }
