@@ -61,19 +61,25 @@ table {
 }
 
 #displayForecast{
-    display: inline-flex;
+    /* display: inline-flex;
     writing-mode: vertical-lr;
     flex-wrap: wrap;
     align-content: flex-start;
-    height: 45%;
+    height: 45%; */
+    
+    overflow: auto;
+    white-space: nowrap;
 }
 
 
 .forecastDetails {
-  writing-mode: horizontal-tb;
+  /* writing-mode: horizontal-tb; */
   width: 250px;
   height: 100px;
-  text-align: center;
+  text-align: center; 
+
+  display: inline-block;
+  
 
 }
 

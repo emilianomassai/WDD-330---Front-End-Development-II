@@ -187,8 +187,8 @@ async function getForecast() {
             // CORRECT IMAGE LINK BUT NOT DISPLAYING PROPERLY
             forecastDIV.innerHTML = `
                     <ul>
-                    <li><img class='iconForecast' src=${iconLink}> </li>
                     <li> ${dateString} at ${hour}:00</li>
+                    <li><img class='iconForecast' src=${iconLink}> </li>
                       <li>Temp:  ${Math.round(data.list[i].main.temp) + "°C"}</li>
                       <li>Feels like:  ${Math.round(data.list[i].main.feels_like) + "°C"}</li>
                       <li>Condition:  ${data.list[i].weather[0].main}</li>
