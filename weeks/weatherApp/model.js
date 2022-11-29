@@ -13,13 +13,6 @@ function formSubmit(form) {
     return false;
 }
 
-function renderForecast() {
-    setup();
-    setTimeout(function () {
-        form.submit();
-    }, 500); // 0.5 seconds
-    return false;
-}
 
 function clearLocalStorage() {
     window.localStorage.clear();
@@ -208,7 +201,7 @@ async function getForecast() {
                       <li>Humidity:  ${data.list[i].main.humidity + "%"}</li>
                       <li>Wind:  ${((data.list[i].wind.speed) * (60 * 60) / 1000).toFixed(2) + "km/h"}</li>
 
-                   </ul><br>`;
+                   </ul>`;
 
             // forecastDIV.style.display = "none";
 
