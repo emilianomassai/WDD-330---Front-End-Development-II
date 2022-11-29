@@ -8,13 +8,15 @@ table {
     justify-content: center; 
     margin-left: auto;
     margin-right: auto;
+    font-size: 15px;
+
 
   }
   
   td {
     border: 1px solid #525252;
-    padding: 5px;
-    width: 50%;
+    padding: 3px;
+    width: 45%;
     background-color: #ffffff;
 
   }
