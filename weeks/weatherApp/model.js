@@ -13,6 +13,14 @@ function formSubmit(form) {
     return false;
 }
 
+function renderForecast() {
+    setup();
+    setTimeout(function () {
+        form.submit();
+    }, 500); // 0.5 seconds
+    return false;
+}
+
 function clearLocalStorage() {
     window.localStorage.clear();
 }
@@ -264,6 +272,7 @@ getForecast()
 
 
 async function setup() {
+    await getForecast()
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'line',
