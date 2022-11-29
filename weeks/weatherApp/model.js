@@ -261,7 +261,6 @@ async function getForecast() {
 
 
 }
-getForecast()
 
 
 async function setup() {

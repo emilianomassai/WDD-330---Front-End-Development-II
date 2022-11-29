@@ -1,0 +1,2 @@
+- displaying twice forecast 
+- on first load error from forecast
