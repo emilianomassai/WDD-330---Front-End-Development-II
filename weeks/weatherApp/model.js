@@ -275,16 +275,16 @@ async function setup() {
                     label: 'Temperature in °C',
                     data: temps,
                     fill: false,
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(47, 122, 184, 1)',
+                    backgroundColor: 'rgba(47, 122, 184, 0.5)',
                     borderWidth: 1
                 },
                 {
                     label: 'Feels Like in °C',
                     data: feelsLikeArr,
                     fill: false,
-                    borderColor: 'rgba(75, 12, 148, 1)',
-                    backgroundColor: 'rgba(75, 12, 148, 1)',
+                    borderColor: 'rgba(228, 86, 60, 1)',
+                    backgroundColor: 'rgba(228, 86, 60, 0.5)',
                     borderWidth: 1
                 }
             ]

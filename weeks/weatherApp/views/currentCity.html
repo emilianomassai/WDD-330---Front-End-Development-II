@@ -24,10 +24,15 @@
         ")";
     </script>
 
-    <h2>Current weather</h2>
-    <h2 id="temperature"></h2>
+    <p id="description"></p>
     <script>
-      document.getElementById("temperature").innerHTML =
+      document.getElementById("description").innerHTML =
+        localStorage.getItem("description");
+    </script>
+
+    <h2 id="temp"></h2>
+    <script>
+      document.getElementById("temp").innerHTML =
         localStorage.getItem("temperature");
     </script>
 
@@ -38,6 +43,13 @@
       iconEl.src = iconLink;
     </script>
 
+    <p id="feels_like"></p>
+    <script>
+      document.getElementById("feels_like").innerHTML =
+        "Feels like " + localStorage.getItem("feels_like");
+    </script>
+    <br />
+    <br />
     <br />
     <br />
     <div id="wrap">
@@ -51,7 +63,7 @@
         class="details"
         onclick="window.location.href='/WDD-330---Front-End-Development-II/weeks/weatherApp/views/weatherDetails.html'"
       >
-        More Details
+        Details
       </button>
     </div>
     <br />
