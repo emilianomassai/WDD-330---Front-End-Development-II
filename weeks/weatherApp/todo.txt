@@ -1,2 +1,2 @@
-- displaying twice forecast 
-- on first load error from forecast
+- ADD OPTION TO GET WEATHER BY CURRENT LOCATION
+-- MODULARIZATION
