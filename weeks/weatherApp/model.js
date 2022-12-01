@@ -20,7 +20,7 @@ function clearLocalStorage() {
 
 
 // take the user input and store it in the local storage
-function saveInfo() {
+async function saveInfo() {
 
     // if city is less then 3 or state less than 3 
 
@@ -39,7 +39,7 @@ function saveInfo() {
     localStorage.setItem("CoordinatesLink", link)
 
     if (link) {
-        getCoordinates()
+        await getCoordinates()
     }
     // getWeather()
     // getForecast()
