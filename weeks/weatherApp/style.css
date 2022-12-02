@@ -83,6 +83,12 @@ table {
 
 }
 
+#error{
+    color: rgba(228, 86, 60, 1);
+    font-style: italic;
+
+}
+
 
 .forecastDetails {
   /* writing-mode: horizontal-tb; */

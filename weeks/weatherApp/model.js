@@ -2,15 +2,30 @@
 const hours = [];
 const temps = [];
 const feelsLikeArr = [];
-
 // function used to slow the loading time to get the 
 // response from the API before open the new page
-function formSubmit(form) {
-    saveInfo();
-    setTimeout(function () {
-        form.submit();
-    }, 500); // 0.5 seconds
-    return false;
+// function formSubmit(form) {
+//     saveInfo();
+//     setTimeout(function () {
+//         form.submit();
+//     }, 500); // 0.5 seconds
+//     return false;
+// }
+
+function validateForm() {
+
+    if (document.getElementById("cityId").value == "") {
+        document.getElementById('error').innerHTML = "Enter a city";
+        return false;
+    } else if (document.getElementById("countryId").value == "") {
+        document.getElementById('error').innerHTML = "Enter a Country";
+        return false;
+    }
+    else
+        document.getElementById('error').innerHTML = "";
+    saveInfo()
+    return true //Don't forget to return true if everything checks out
+
 }
 
 
@@ -19,10 +34,9 @@ function clearLocalStorage() {
 }
 
 
+
 // take the user input and store it in the local storage
 async function saveInfo() {
-
-    // if city is less then 3 or state less than 3 
 
     var cityId = document.getElementById("cityId").value;
     var countryId = document.getElementById("countryId").value;
@@ -38,14 +52,19 @@ async function saveInfo() {
     localStorage.setItem("StateName", stateId);
     localStorage.setItem("CoordinatesLink", link)
 
-    if (link) {
-        await getCoordinates()
-    }
+    // if (link) {
+    waitForCoordinates();
+    // }
     // getWeather()
     // getForecast()
+
+
 }
 
 
+async function waitForCoordinates() {
+    await getCoordinates();
+}
 
 async function getCoordinates() {
 
@@ -57,26 +76,60 @@ async function getCoordinates() {
         if (data != '') {
             localStorage.setItem("latitude", data[0].lat);
             localStorage.setItem("longitude", data[0].lon);
-            localStorage.setItem('good_response.status', response.status)
-            getWeather()
-
+            localStorage.setItem('good_response.status', response.status);
+            waitForWeather();
         }
         else
-            location.replace("./index.html")
+
+            document.getElementById('error').innerHTML = "No city found. Try again."
+        document.getElementById("cityId").value = "";
+        document.getElementById("countryId").value = "";
+        document.getElementById("stateId").value = "";
     }
 }
+
+
+async function getCurrentLocation() {
+
+    const successCallback = (position) => {
+        console.log('your latitude ' + position.coords.latitude)
+        console.log('your longitude ' + position.coords.longitude)
+        localStorage.setItem("latitude", position.coords.latitude);
+        localStorage.setItem("longitude", position.coords.longitude);
+        waitForWeather();
+    };
+
+    const errorCallback = (error) => {
+        console.log(position);
+        location.replace("./index.html")
+
+    };
+
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+}
+
+
+async function waitForWeather() {
+    await getWeather();
+    location.replace("./views/currentCity.html")
+
+}
+
+
+
+
 
 // getCoordinates()
 
 
 async function getWeather() {
 
-    const apyKey = "bedecaf711a6770c6a01a7e84725bfaf"
-    var latitude = localStorage.getItem("latitude")
-    var longitude = localStorage.getItem("longitude")
+    const apyKey = "bedecaf711a6770c6a01a7e84725bfaf";
+    var latitude = localStorage.getItem("latitude");
+    var longitude = localStorage.getItem("longitude");
 
-    console.log("latitude localstorage: " + latitude)
-    console.log("longitude localstorage: " + longitude)
+    console.log("latitude localstorage: " + latitude);
+    console.log("longitude localstorage: " + longitude);
 
     if (latitude && longitude) {
         var weatherLink = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + apyKey;
@@ -94,8 +147,8 @@ async function getWeather() {
         var iconLink = rootUrl + iconValue + "@4x.png";
         localStorage.setItem("icon", iconLink);
         //description working with first letter capitalized 
-        const apiDescription = data.weather[0].description
-        const outputDescription = apiDescription.charAt(0).toUpperCase() + apiDescription.slice(1)
+        const apiDescription = data.weather[0].description;
+        const outputDescription = apiDescription.charAt(0).toUpperCase() + apiDescription.slice(1);
         localStorage.setItem("description", outputDescription);
         // temperature in C
         localStorage.setItem("temperature", Math.round(data.main.temp) + "°C");
@@ -122,7 +175,7 @@ async function getWeather() {
         var UnixSunset = data.sys.sunset
         localStorage.setItem("sunset", format_time(UnixSunset) + " UTC");
         //country
-        localStorage.setItem("country", data.sys.country)
+        localStorage.setItem("country", data.sys.country);
 
     }
 

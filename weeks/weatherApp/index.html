@@ -25,20 +25,16 @@
       alt="weather app icon"
       id="appIcon"
     />
-    <p>Click and hold the image above to see an animation.</p>
+    <p>Click and hold to spin the image</p>
+    <p id="error"></p>
     <br />
     <br />
-    <form
-      id="cityForm"
-      action="/WDD-330---Front-End-Development-II/weeks/weatherApp/views/currentCity.html"
-      onsubmit="return formSubmit(this);"
-    >
+    <form id="cityForm">
       <input
         type="text"
         id="cityId"
         name="city"
         placeholder="Enter your City"
-        required
       />
 
       <input
@@ -52,11 +48,22 @@
         id="countryId"
         name="country"
         placeholder="Enter your Country"
-        required
       />
       <br />
-      <input type="submit" class="btn" value="Search" />
+      <input
+        type="button"
+        onclick="validateForm() "
+        class="btn"
+        value="Search"
+      />
+      <input
+        type="button"
+        onclick="getCurrentLocation()"
+        class="btn"
+        value="Current Location"
+      />
     </form>
+
     <br />
     <a href="/WDD-330---Front-End-Development-II/index.html">Go back Home</a>
 
