@@ -223,7 +223,12 @@ async function getForecast() {
             }
 
             // store data for the graph
-            hours.push(hour + ':00');
+            var string = date.toDateString()
+
+            let nameOfDay = string.substring(string.length - 12, 0);
+            let numberOfDay = string.substring(string.length - 4, + 7);
+
+            hours.push(nameOfDay + " " + numberOfDay + " " + hour + ':00');
             temps.push(Math.round(data.list[i].main.temp));
             feelsLikeArr.push(Math.round(data.list[i].main.feels_like));
 
