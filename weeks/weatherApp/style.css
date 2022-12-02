@@ -153,10 +153,14 @@ input {
 
 
 
-#appIcon:active {
+#appIcon:hover, #appIcon:active {
     transform: rotate(360deg)
 
 }
+
+
+
+
 
 #iconView{
     height: auto;
