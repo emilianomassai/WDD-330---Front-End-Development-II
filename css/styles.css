@@ -6,7 +6,7 @@
 
 p, li, #numberOutput, #input, #resultNumber{
     font-family: "Lucida Sans Unicode", Verdana, sans-serif;
-    color: #525252;
+    color: #B4AEA4;
 }
 
 #code {
@@ -23,14 +23,14 @@ p, li, #numberOutput, #input, #resultNumber{
 
   h2, h3, h4{
     font-family: "Lucida Sans Unicode", Verdana, sans-serif;
-    color: #525252;
+    color: #B4AEA4;
 
   }
 
 
   h1{
     font-family: "Lucida Sans Unicode", Verdana, sans-serif;
-    background: #0076b6c6;
+    background: rgb(8, 87, 133);
     padding: 15px;
     color: rgba(255, 255, 255, 0.893);
   }

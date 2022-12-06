@@ -330,7 +330,7 @@ async function setup() {
             labels: hours,
             datasets: [
                 {
-                    label: 'Temperature in °C',
+                    label: 'Temperature °C',
                     data: temps,
                     fill: false,
                     borderColor: 'rgba(47, 122, 184, 1)',
@@ -338,7 +338,7 @@ async function setup() {
                     borderWidth: 1
                 },
                 {
-                    label: 'Feels Like in °C',
+                    label: 'Feels Like °C',
                     data: feelsLikeArr,
                     fill: false,
                     borderColor: 'rgba(228, 86, 60, 1)',

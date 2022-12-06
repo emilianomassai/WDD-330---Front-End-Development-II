@@ -1,5 +1,5 @@
 body{
-    background-color: #85cef59b;
+    background-color: rgb(19, 59, 83);
     margin-top: -1.5em;
 
 }
@@ -19,7 +19,7 @@ table {
     border: 1px solid #525252;
     padding: 3px;
     width: 45%;
-    background-color: #ffffff89;
+    background-color: #181A1B8A;
 
   }
   
@@ -79,7 +79,7 @@ table {
     overflow: auto;
     white-space: nowrap;
     border: 1px solid #0076b6c6;
-    background: #f6f7f87c;
+    background: #1D1F207D;
     border-radius: 10px;
     
 
@@ -126,6 +126,7 @@ h1, h2, h3, h4, p{
 
 input {
     display: block;
+    color: rgb(119, 115, 109);
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1%;
@@ -134,6 +135,7 @@ input {
     padding-top: 1%;
     padding-bottom: 1%;
     text-align: center;
+    background-color: rgb(59, 59, 59);
 }
 
 #temp{
@@ -142,7 +144,7 @@ input {
 }
 
 #appIcon {
-    width: 30%;
+    width: 25%;
     height: auto;
     display: block;
     margin-left: auto;
