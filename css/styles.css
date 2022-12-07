@@ -2,7 +2,11 @@
     box-sizing: border-box;
   }
 
+  body{
+    background-color: rgb(19, 59, 83);
+    margin-top: -1.5em;
 
+}
 
 p, li, #numberOutput, #input, #resultNumber{
     font-family: "Lucida Sans Unicode", Verdana, sans-serif;
@@ -52,7 +56,7 @@ p, li, #numberOutput, #input, #resultNumber{
   
   a {
     display: block;
-    color: #525252;
+    color: #B4AEA4;
     text-decoration: none;
     font-size: 15px;
     line-height: 40px;

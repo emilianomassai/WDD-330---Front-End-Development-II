@@ -2,44 +2,44 @@
 var weekItems = [
     {
         label: "Week 01",
-        url: "weeks/week1/index.html"
+        url: "/WDD-330---Front-End-Development-II/weeks/week1/index.html"
     },
 
     {
         label: "Week 02",
-        url: "weeks/week2/index.html"
+        url: "/WDD-330---Front-End-Development-II/weeks/week2/index.html"
     },
     {
         label: "Week 03",
-        url: "weeks/week3/index.html"
+        url: "/WDD-330---Front-End-Development-II/weeks/week3/index.html"
     },
     {
         label: "Week 04",
-        url: "weeks/week4/index.html"
+        url: "/WDD-330---Front-End-Development-II/weeks/week4/index.html"
     },
     {
         label: "Week 05 and 06",
-        url: "weeks/week5/index.html"
+        url: "/WDD-330---Front-End-Development-II/weeks/week5/index.html"
     },
     {
         label: "Week 07",
-        url: "weeks/week7/index.html"
+        url: "/WDD-330---Front-End-Development-II/weeks/week7/index.html"
     },
     {
         label: "Week 08",
-        url: "weeks/week8/index.html"
+        url: "/WDD-330---Front-End-Development-II/weeks/week8/index.html"
     },
     {
         label: "Week 09",
-        url: "weeks/week9/index.html"
+        url: "/WDD-330---Front-End-Development-II/weeks/week9/index.html"
     },
     {
         label: "Week 10",
-        url: "weeks/week10/index.html"
+        url: "/WDD-330---Front-End-Development-II/weeks/week10/index.html"
     },
     {
         label: "Weather App",
-        url: "weeks/weatherApp/index.html"
+        url: "/WDD-330---Front-End-Development-II/weeks/weatherApp/index.html"
     }
 ]
 

@@ -8,7 +8,7 @@
 
 // creating a path variable to make it easier to type, and less error prone.
 // const imgPath = '//byui-cit.github.io/cit261/examples/';
-const imgPath = '/weeks/week5/teamActivity/finalOutput/images/';
+const imgPath = '/WDD-330---Front-End-Development-II//weeks/week5/teamActivity/finalOutput/images/';
 
 
 

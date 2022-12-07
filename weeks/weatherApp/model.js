@@ -2,15 +2,6 @@
 const hours = [];
 const temps = [];
 const feelsLikeArr = [];
-// function used to slow the loading time to get the 
-// response from the API before open the new page
-// function formSubmit(form) {
-//     saveInfo();
-//     setTimeout(function () {
-//         form.submit();
-//     }, 500); // 0.5 seconds
-//     return false;
-// }
 
 function validateForm() {
 
@@ -52,11 +43,7 @@ async function saveInfo() {
     localStorage.setItem("StateName", stateId);
     localStorage.setItem("CoordinatesLink", link)
 
-    // if (link) {
     waitForCoordinates();
-    // }
-    // getWeather()
-    // getForecast()
 
 
 }
@@ -114,12 +101,6 @@ async function waitForWeather() {
     location.replace("./views/currentCity.html")
 
 }
-
-
-
-
-
-// getCoordinates()
 
 
 async function getWeather() {
@@ -206,14 +187,11 @@ async function getForecast() {
         const response = await fetch(forecastLink);
         const data = await response.json();
         console.log(data);
-        // localStorage.setItem("forecast_temp", data.list[0].main.temp);
         const mainUL = document.createElement("ul");
+
+
         // displayForecast
-
-
-
         for (let i = 0; i < data.list.length; i++) {
-            // const forecastLI = document.createElement("li");
 
             var timestamp = data.list[i].dt * 1000;
             var date = new Date(timestamp);
@@ -234,7 +212,6 @@ async function getForecast() {
 
             var string = date.toDateString()
             let dateString = string.substring(string.length - 4, 0);
-            // forecastLI.innerHTML = dateString + " at " + hour + ":00";
 
 
 
@@ -247,7 +224,6 @@ async function getForecast() {
             console.log("Icon link " + iconLink)
 
 
-            // CORRECT IMAGE LINK BUT NOT DISPLAYING PROPERLY
             forecastDIV.innerHTML = `
                     <ul>
                     <li> ${dateString} at ${hour}:00</li>
@@ -261,18 +237,10 @@ async function getForecast() {
 
                    </ul>`;
 
-            // forecastDIV.style.display = "none";
 
-            // forecastLI.setAttribute("id", "detail" + i);
-            // forecastDIV.setAttribute("id", "content" + i);
 
             forecastDIV.setAttribute("class", "forecastDetails");
 
-
-
-
-
-            // forecastLI.appendChild(forecastDIV);
             // append forecast list to mainUL
             mainUL.appendChild(forecastDIV);
         }
@@ -283,7 +251,7 @@ async function getForecast() {
         }
 
 
-        //DEBUG PURPOSE ONLY:
+        //Used for the graph values
 
         var forecast = data.list.map(function (obj) {
 
@@ -291,12 +259,12 @@ async function getForecast() {
 
             var date = new Date(timestamp);
 
-            var year = date.getFullYear();
-            var month = date.getMonth();
-            var day = date.getDay();
+            // var year = date.getFullYear();
+            // var month = date.getMonth();
+            // var day = date.getDay();
             var hour = date.getHours();
-            var mins = date.getMinutes();
-            var secs = date.getSeconds();
+            // var mins = date.getMinutes();
+            // var secs = date.getSeconds();
 
             var dateString = date.toDateString() + " at " + hour + ":00";
             return {
@@ -312,8 +280,7 @@ async function getForecast() {
             }
         });
         console.log(forecast);
-        // console.log(temps)
-        ///finished debug ////////////
+
     }
 
 
